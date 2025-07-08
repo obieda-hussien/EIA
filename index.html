@@ -265,11 +265,120 @@
             border-radius: 20px;
             overflow: hidden;
             transition: all 0.4s ease;
+            cursor: pointer;
         }
         
         .news-card:hover {
             transform: scale(1.02);
             box-shadow: 0 25px 50px rgba(30, 64, 175, 0.15);
+        }
+        
+        .article-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        
+        .article-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .article-content {
+            background: white;
+            border-radius: 20px;
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: slideIn 0.3s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .social-share {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 18px;
+        }
+        
+        .social-btn:hover {
+            transform: scale(1.1);
+        }
+        
+        .social-btn.facebook { background: #1877F2; }
+        .social-btn.twitter { background: #1DA1F2; }
+        .social-btn.whatsapp { background: #25D366; }
+        .social-btn.telegram { background: #0088cc; }
+        .social-btn.linkedin { background: #0077B5; }
+        
+        .event-registration {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+            border: 2px solid #0284c7;
+        }
+        
+        .interaction-stats {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #e5e7eb;
+        }
+        
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #6b7280;
+            font-size: 14px;
+        }
+        
+        .like-btn {
+            background: none;
+            border: none;
+            color: #6b7280;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .like-btn:hover,
+        .like-btn.liked {
+            color: #ef4444;
         }
         
         .contact-form input,
@@ -1455,7 +1564,7 @@
                     <h2 class="text-4xl font-bold text-center text-gray-800 mb-12">آخر الأخبار</h2>
                     
                     <div class="grid md:grid-cols-3 gap-8">
-                        <div class="news-card">
+                        <div class="news-card" onclick="openArticle('graduation-2024')">
                             <div class="h-48 bg-gradient-to-r from-blue-400 to-blue-600 flex items-center justify-center">
                                 <i class="fas fa-graduation-cap text-white text-4xl"></i>
                             </div>
@@ -1468,13 +1577,26 @@
                                 <p class="text-gray-600 mb-4">
                                     احتفل المعهد المصري بتخرج أكتر من 500 خريج وخريجة من الدفعة الـ 28. الحفل كان مميز جداً وحضره كبار المسؤولين وأهالي الطلاب...
                                 </p>
-                                <button class="text-blue-600 font-semibold hover:text-blue-800">
-                                    اقرأ المزيد <i class="fas fa-arrow-left mr-1"></i>
-                                </button>
+                                <div class="interaction-stats">
+                                    <div class="stat-item">
+                                        <button class="like-btn" onclick="event.stopPropagation(); toggleLike(this, 'graduation-2024')">
+                                            <i class="fas fa-heart"></i>
+                                        </button>
+                                        <span class="like-count">245</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <i class="fas fa-eye"></i>
+                                        <span>1.2k مشاهدة</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <i class="fas fa-share"></i>
+                                        <span>89 مشاركة</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         
-                        <div class="news-card">
+                        <div class="news-card" onclick="openArticle('excellence-award')">
                             <div class="h-48 bg-gradient-to-r from-green-400 to-green-600 flex items-center justify-center">
                                 <i class="fas fa-trophy text-white text-4xl"></i>
                             </div>
@@ -1487,13 +1609,26 @@
                                 <p class="text-gray-600 mb-4">
                                     حصل المعهد المصري على جائزة أفضل معهد تعليمي في محافظة الإسكندرية للعام الثالث على التوالي. الجائزة جت تقديراً للمستوى العالي...
                                 </p>
-                                <button class="text-green-600 font-semibold hover:text-green-800">
-                                    اقرأ المزيد <i class="fas fa-arrow-left mr-1"></i>
-                                </button>
+                                <div class="interaction-stats">
+                                    <div class="stat-item">
+                                        <button class="like-btn" onclick="event.stopPropagation(); toggleLike(this, 'excellence-award')">
+                                            <i class="fas fa-heart"></i>
+                                        </button>
+                                        <span class="like-count">187</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <i class="fas fa-eye"></i>
+                                        <span>890 مشاهدة</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <i class="fas fa-share"></i>
+                                        <span>56 مشاركة</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         
-                        <div class="news-card">
+                        <div class="news-card" onclick="openArticle('new-partnership')">
                             <div class="h-48 bg-gradient-to-r from-purple-400 to-purple-600 flex items-center justify-center">
                                 <i class="fas fa-handshake text-white text-4xl"></i>
                             </div>
@@ -1506,9 +1641,22 @@
                                 <p class="text-gray-600 mb-4">
                                     وقع المعهد بروتوكول تعاون مع أكبر الشركات في الإسكندرية لتدريب الطلاب وتوفير فرص عمل مضمونة للخريجين...
                                 </p>
-                                <button class="text-purple-600 font-semibold hover:text-purple-800">
-                                    اقرأ المزيد <i class="fas fa-arrow-left mr-1"></i>
-                                </button>
+                                <div class="interaction-stats">
+                                    <div class="stat-item">
+                                        <button class="like-btn" onclick="event.stopPropagation(); toggleLike(this, 'new-partnership')">
+                                            <i class="fas fa-heart"></i>
+                                        </button>
+                                        <span class="like-count">312</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <i class="fas fa-eye"></i>
+                                        <span>1.5k مشاهدة</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <i class="fas fa-share"></i>
+                                        <span>98 مشاركة</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1532,13 +1680,24 @@
                             <p class="text-gray-600 mb-6">
                                 ورشة عمل مجانية لكل طلاب المعهد عن إزاي تبدأ مشروعك الخاص وتبقى رائد أعمال ناجح. الورشة هتكون على إيد خبراء في المجال.
                             </p>
-                            <div class="flex items-center justify-between">
+                            <div class="flex items-center justify-between mb-4">
                                 <div class="flex items-center text-gray-500">
                                     <i class="fas fa-clock mr-2"></i>
                                     <span>10 صباحاً - 2 عصراً</span>
                                 </div>
-                                <button class="bg-orange-600 text-white px-4 py-2 rounded-lg hover:bg-orange-700 transition">
+                                <div class="flex items-center text-gray-500">
+                                    <i class="fas fa-users mr-2"></i>
+                                    <span>45 مسجل</span>
+                                </div>
+                            </div>
+                            <div class="flex gap-3">
+                                <button class="bg-orange-600 text-white px-4 py-2 rounded-lg hover:bg-orange-700 transition flex-1" onclick="openEventRegistration('entrepreneurship-workshop')">
+                                    <i class="fas fa-user-plus mr-2"></i>
                                     سجل دلوقتي
+                                </button>
+                                <button class="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-200 transition" onclick="shareEvent('entrepreneurship-workshop')">
+                                    <i class="fas fa-share mr-2"></i>
+                                    شارك
                                 </button>
                             </div>
                         </div>
@@ -1556,13 +1715,24 @@
                             <p class="text-gray-600 mb-6">
                                 لقاء سنوي مع خريجي المعهد الناجحين للاستفادة من خبراتهم ومشاركة قصص النجاح. فرصة ذهبية للتواصل وبناء العلاقات المهنية.
                             </p>
-                            <div class="flex items-center justify-between">
+                            <div class="flex items-center justify-between mb-4">
                                 <div class="flex items-center text-gray-500">
                                     <i class="fas fa-clock mr-2"></i>
                                     <span>6 مساءً - 9 مساءً</span>
                                 </div>
-                                <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
+                                <div class="flex items-center text-gray-500">
+                                    <i class="fas fa-users mr-2"></i>
+                                    <span>78 مسجل</span>
+                                </div>
+                            </div>
+                            <div class="flex gap-3">
+                                <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition flex-1" onclick="openEventRegistration('alumni-meeting')">
+                                    <i class="fas fa-user-plus mr-2"></i>
                                     سجل دلوقتي
+                                </button>
+                                <button class="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-200 transition" onclick="shareEvent('alumni-meeting')">
+                                    <i class="fas fa-share mr-2"></i>
+                                    شارك
                                 </button>
                             </div>
                         </div>
@@ -1580,13 +1750,24 @@
                             <p class="text-gray-600 mb-6">
                                 دورة مكثفة في برنامج Excel المتقدم للطلاب والخريجين. هتتعلم كل الحاجات المهمة اللي محتاجها في شغلك المستقبلي.
                             </p>
-                            <div class="flex items-center justify-between">
+                            <div class="flex items-center justify-between mb-4">
                                 <div class="flex items-center text-gray-500">
                                     <i class="fas fa-clock mr-2"></i>
                                     <span>3 أيام متتالية</span>
                                 </div>
-                                <button class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition">
+                                <div class="flex items-center text-gray-500">
+                                    <i class="fas fa-users mr-2"></i>
+                                    <span>32 مسجل</span>
+                                </div>
+                            </div>
+                            <div class="flex gap-3">
+                                <button class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition flex-1" onclick="openEventRegistration('excel-course')">
+                                    <i class="fas fa-user-plus mr-2"></i>
                                     سجل دلوقتي
+                                </button>
+                                <button class="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-200 transition" onclick="shareEvent('excel-course')">
+                                    <i class="fas fa-share mr-2"></i>
+                                    شارك
                                 </button>
                             </div>
                         </div>
@@ -1598,6 +1779,34 @@
                                 </div>
                                 <div>
                                     <h3 class="text-xl font-bold text-gray-800">حملة التبرع بالدم</h3>
+                                    <p class="text-red-600 font-semibold">30 يوليو 2024</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 mb-6">
+                                حملة إنسانية للتبرع بالدم بالتعاون مع بنك الدم المركزي. مشاركتك هتساعد في إنقاذ حياة الآخرين.
+                            </p>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="flex items-center text-gray-500">
+                                    <i class="fas fa-clock mr-2"></i>
+                                    <span>9 صباحاً - 3 عصراً</span>
+                                </div>
+                                <div class="flex items-center text-gray-500">
+                                    <i class="fas fa-users mr-2"></i>
+                                    <span>23 مسجل</span>
+                                </div>
+                            </div>
+                            <div class="flex gap-3">
+                                <button class="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition flex-1" onclick="openEventRegistration('blood-donation')">
+                                    <i class="fas fa-user-plus mr-2"></i>
+                                    سجل دلوقتي
+                                </button>
+                                <button class="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-200 transition" onclick="shareEvent('blood-donation')">
+                                    <i class="fas fa-share mr-2"></i>
+                                    شارك
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                                     <p class="text-red-600 font-semibold">18 أغسطس 2024</p>
                                 </div>
                             </div>
@@ -2089,7 +2298,570 @@
             
             counters.forEach(counter => counterObserver.observe(counter));
         });
+        
+        // Enhanced News and Events Functions
+        let currentArticle = null;
+        let currentEvent = null;
+        
+        // Article data
+        const articles = {
+            'graduation-2024': {
+                title: 'احتفالية تخرج الدفعة 28',
+                date: '15 يونيو 2024',
+                category: 'تخرج',
+                image: 'images/graduation-2024.jpg',
+                views: '1.2k',
+                likes: 245,
+                body: `
+                    <h3>احتفالية مميزة بتخرج أكثر من 500 طالب وطالبة</h3>
+                    <p>في جو من الفرح والسعادة، احتفل المعهد المصري لأكاديمية الإسكندرية بتخرج الدفعة الثامنة والعشرين من طلاب المعهد، والتي ضمت أكثر من 500 خريج وخريجة من مختلف التخصصات.</p>
+                    
+                    <p>الحفل أقيم في القاعة الكبرى بالمعهد بحضور:</p>
+                    <ul>
+                        <li>الأستاذ الدكتور أحمد محمود - مدير المعهد</li>
+                        <li>نخبة من أعضاء هيئة التدريس</li>
+                        <li>أهالي الطلاب والخريجين</li>
+                        <li>ممثلين عن الشركات الشريكة</li>
+                    </ul>
+                    
+                    <p>وقد ألقى مدير المعهد كلمة رحب فيها بالحضور، مؤكداً على أن هذه اللحظة تمثل ثمرة جهود سنوات من العمل الجاد والتفاني في طلب العلم والمعرفة.</p>
+                    
+                    <h4>أرقام وإحصائيات الدفعة:</h4>
+                    <ul>
+                        <li>500+ خريج وخريجة</li>
+                        <li>85% معدل التوظيف خلال 6 أشهر</li>
+                        <li>120 طالب حاصل على درجة امتياز</li>
+                        <li>45 مشروع تخرج مميز</li>
+                    </ul>
+                    
+                    <p>نتمنى لجميع خريجينا التوفيق والنجاح في حياتهم العملية والمهنية.</p>
+                `
+            },
+            'excellence-award': {
+                title: 'المعهد يحصل على جائزة التميز',
+                date: '10 يوليو 2024',
+                category: 'إنجاز',
+                image: 'images/excellence-award.jpg',
+                views: '890',
+                likes: 187,
+                body: `
+                    <h3>المعهد المصري يحصل على جائزة التميز للعام الثالث على التوالي</h3>
+                    <p>في إنجاز جديد يُضاف إلى سجل المعهد المصري لأكاديمية الإسكندرية، حصل المعهد على جائزة أفضل معهد تعليمي في محافظة الإسكندرية للعام الثالث على التوالي.</p>
+                    
+                    <p>الجائزة تأتي تقديراً للمستوى التعليمي المتميز الذي يقدمه المعهد، والذي يشمل:</p>
+                    <ul>
+                        <li>نخبة من أفضل أعضاء هيئة التدريس</li>
+                        <li>مناهج دراسية متطورة ومواكبة لسوق العمل</li>
+                        <li>مرافق تعليمية حديثة ومجهزة بأحدث التقنيات</li>
+                        <li>برامج تدريبية وورش عمل متخصصة</li>
+                    </ul>
+                    
+                    <p>وقد عبر الأستاذ الدكتور أحمد محمود، مدير المعهد، عن سعادته بهذا الإنجاز قائلاً: "هذه الجائزة تمثل اعترافاً بجهود جميع أعضاء المعهد من إدارة وأعضاء هيئة تدريس وطلاب، وتحفزنا على المضي قدماً نحو مزيد من التطوير والتميز."</p>
+                    
+                    <h4>معايير التقييم:</h4>
+                    <ul>
+                        <li>جودة التعليم والمناهج</li>
+                        <li>نسبة توظيف الخريجين</li>
+                        <li>مستوى الخدمات الطلابية</li>
+                        <li>التطوير المستمر للمرافق</li>
+                    </ul>
+                    
+                    <p>نتطلع إلى مواصلة هذا التميز في السنوات القادمة بإذن الله.</p>
+                `
+            },
+            'new-partnership': {
+                title: 'شراكة جديدة مع أكبر الشركات',
+                date: '25 يونيو 2024',
+                category: 'شراكة',
+                image: 'images/partnership.jpg',
+                views: '1.5k',
+                likes: 312,
+                body: `
+                    <h3>المعهد يوقع بروتوكول تعاون مع كبرى الشركات في الإسكندرية</h3>
+                    <p>في خطوة استراتيجية مهمة، وقع المعهد المصري لأكاديمية الإسكندرية بروتوكول تعاون مع مجموعة من كبرى الشركات في محافظة الإسكندرية، بهدف تدريب الطلاب وتوفير فرص عمل مضمونة للخريجين.</p>
+                    
+                    <p>الشراكة تشمل الشركات التالية:</p>
+                    <ul>
+                        <li>شركة الإسكندرية للحاويات والبضائع</li>
+                        <li>بنك الإسكندرية</li>
+                        <li>شركة الإسكندرية للأدوية</li>
+                        <li>مجموعة العربي للاستثمار</li>
+                        <li>شركة الإسكندرية للصناعات الغذائية</li>
+                    </ul>
+                    
+                    <p>وتتضمن الشراكة عدة محاور أساسية:</p>
+                    
+                    <h4>1. التدريب الميداني:</h4>
+                    <ul>
+                        <li>برامج تدريبية صيفية للطلاب</li>
+                        <li>فرص تدريب في بيئة العمل الحقيقية</li>
+                        <li>اكتساب خبرات عملية قيمة</li>
+                    </ul>
+                    
+                    <h4>2. فرص التوظيف:</h4>
+                    <ul>
+                        <li>ضمان توظيف 70% من الخريجين المتفوقين</li>
+                        <li>برامج التوظيف المباشر</li>
+                        <li>مسارات مهنية واضحة</li>
+                    </ul>
+                    
+                    <h4>3. تطوير المناهج:</h4>
+                    <ul>
+                        <li>مراجعة المناهج بما يتماشى مع احتياجات السوق</li>
+                        <li>إضافة مواد تخصصية جديدة</li>
+                        <li>ورش عمل متخصصة</li>
+                    </ul>
+                    
+                    <p>هذه الشراكة تؤكد حرص المعهد على ربط التعليم بسوق العمل وضمان مستقبل أفضل لطلابه.</p>
+                `
+            }
+        };
+        
+        // Event data
+        const events = {
+            'entrepreneurship-workshop': {
+                title: 'ورشة ريادة الأعمال',
+                date: '20 يوليو 2024',
+                time: '10 صباحاً - 2 عصراً',
+                location: 'قاعة المؤتمرات - المعهد المصري',
+                registrations: 45,
+                googleForm: 'https://docs.google.com/forms/d/e/1FAIpQLSe_example_form_id/viewform',
+                description: `
+                    <h4>تفاصيل الورشة:</h4>
+                    <p>ورشة عمل مجانية مفتوحة لجميع طلاب المعهد وأي شخص مهتم بريادة الأعمال. الورشة تهدف إلى تعليم المشاركين كيفية بدء مشروع ناجح وتطوير فكرة إبداعية إلى واقع قابل للتطبيق.</p>
+                    
+                    <h4>محاور الورشة:</h4>
+                    <ul>
+                        <li>مقدمة في ريادة الأعمال</li>
+                        <li>تحديد الفكرة وتقييم الفرص</li>
+                        <li>إعداد خطة العمل</li>
+                        <li>مصادر التمويل</li>
+                        <li>التسويق والمبيعات</li>
+                        <li>إدارة المشروع الناشئ</li>
+                    </ul>
+                    
+                    <h4>المحاضرون:</h4>
+                    <ul>
+                        <li>أ.د. سامي أحمد - خبير ريادة الأعمال</li>
+                        <li>أ. مها علي - مديرة مشاريع تقنية</li>
+                        <li>أ. أحمد محمود - مؤسس شركة ناشئة</li>
+                    </ul>
+                    
+                    <h4>ما سوف تحصل عليه:</h4>
+                    <ul>
+                        <li>شهادة مشاركة معتمدة</li>
+                        <li>مواد تدريبية شاملة</li>
+                        <li>شبكة علاقات مع رواد الأعمال</li>
+                        <li>استشارات مجانية لمدة 3 أشهر</li>
+                    </ul>
+                `
+            },
+            'alumni-meeting': {
+                title: 'لقاء الخريجين السنوي',
+                date: '5 أغسطس 2024',
+                time: '6 مساءً - 9 مساءً',
+                location: 'قاعة الاحتفالات - المعهد المصري',
+                registrations: 78,
+                googleForm: 'https://docs.google.com/forms/d/e/1FAIpQLSe_example_form_id2/viewform',
+                description: `
+                    <h4>لقاء سنوي مع خريجي المعهد الناجحين</h4>
+                    <p>فعالية سنوية تجمع خريجي المعهد من مختلف الدفعات للاستفادة من خبراتهم ومشاركة قصص النجاح. اللقاء يوفر فرصة ذهبية للتواصل وبناء العلاقات المهنية.</p>
+                    
+                    <h4>برنامج اللقاء:</h4>
+                    <ul>
+                        <li>كلمة ترحيبية من إدارة المعهد</li>
+                        <li>عرض إنجازات المعهد خلال العام</li>
+                        <li>قصص نجاح من الخريجين</li>
+                        <li>ورش عمل متخصصة</li>
+                        <li>جلسة أسئلة وأجوبة</li>
+                        <li>فقرة تكريم المتميزين</li>
+                    </ul>
+                    
+                    <h4>المتحدثون المتوقعون:</h4>
+                    <ul>
+                        <li>أ. محمد عادل - مدير عام بنك الإسكندرية</li>
+                        <li>أ. فاطمة سعد - مديرة مبيعات شركة دولية</li>
+                        <li>أ. أحمد حسن - رائد أعمال ناجح</li>
+                        <li>أ. نورا محمد - مديرة موارد بشرية</li>
+                    </ul>
+                    
+                    <h4>فوائد المشاركة:</h4>
+                    <ul>
+                        <li>التواصل مع شبكة واسعة من المهنيين</li>
+                        <li>فرص عمل جديدة</li>
+                        <li>تبادل الخبرات والمعرفة</li>
+                        <li>التعرف على آخر التطورات في سوق العمل</li>
+                    </ul>
+                `
+            },
+            'excel-course': {
+                title: 'دورة Excel المتقدمة',
+                date: '12 أغسطس 2024',
+                time: '3 أيام متتالية - 10 صباحاً حتى 2 عصراً',
+                location: 'معمل الحاسوب - المعهد المصري',
+                registrations: 32,
+                googleForm: 'https://docs.google.com/forms/d/e/1FAIpQLSe_example_form_id3/viewform',
+                description: `
+                    <h4>دورة مكثفة في Excel المتقدم</h4>
+                    <p>دورة شاملة لتعلم جميع أسرار برنامج Excel المتقدم، مناسبة للطلاب والخريجين الذين يريدون تطوير مهاراتهم في استخدام هذا البرنامج الحيوي في سوق العمل.</p>
+                    
+                    <h4>محتوى الدورة:</h4>
+                    <p><strong>اليوم الأول:</strong></p>
+                    <ul>
+                        <li>مراجعة الأساسيات</li>
+                        <li>الدوال المتقدمة (VLOOKUP, HLOOKUP, INDEX, MATCH)</li>
+                        <li>الدوال الشرطية المعقدة</li>
+                        <li>العمل مع النصوص والتواريخ</li>
+                    </ul>
+                    
+                    <p><strong>اليوم الثاني:</strong></p>
+                    <ul>
+                        <li>الجداول المحورية (Pivot Tables)</li>
+                        <li>تحليل البيانات</li>
+                        <li>الرسوم البيانية المتقدمة</li>
+                        <li>التنسيق الشرطي</li>
+                    </ul>
+                    
+                    <p><strong>اليوم الثالث:</strong></p>
+                    <ul>
+                        <li>الماكرو والأتمتة</li>
+                        <li>حماية البيانات</li>
+                        <li>التعامل مع قواعد البيانات</li>
+                        <li>مشاريع عملية</li>
+                    </ul>
+                    
+                    <h4>المدرب:</h4>
+                    <p>أ. محمد عبد الله - مدرب معتمد من Microsoft</p>
+                    
+                    <h4>المتطلبات:</h4>
+                    <ul>
+                        <li>معرفة أساسية ببرنامج Excel</li>
+                        <li>جهاز لابتوب (اختياري)</li>
+                        <li>دفتر ملاحظات</li>
+                    </ul>
+                    
+                    <h4>الشهادة:</h4>
+                    <p>شهادة معتمدة من المعهد المصري لأكاديمية الإسكندرية</p>
+                `
+            },
+            'blood-donation': {
+                title: 'حملة التبرع بالدم',
+                date: '30 يوليو 2024',
+                time: '9 صباحاً - 3 عصراً',
+                location: 'ساحة المعهد',
+                registrations: 23,
+                googleForm: 'https://docs.google.com/forms/d/e/1FAIpQLSe_example_form_id4/viewform',
+                description: `
+                    <h4>حملة إنسانية للتبرع بالدم</h4>
+                    <p>حملة خيرية للتبرع بالدم بالتعاون مع بنك الدم المركزي بالإسكندرية. مشاركتك ستساعد في إنقاذ حياة الآخرين وتقديم الدعم للمرضى المحتاجين.</p>
+                    
+                    <h4>شروط التبرع:</h4>
+                    <ul>
+                        <li>العمر من 18 إلى 65 سنة</li>
+                        <li>الوزن أكثر من 50 كيلو</li>
+                        <li>عدم وجود أمراض مزمنة</li>
+                        <li>عدم التبرع خلال الشهرين الماضيين</li>
+                    </ul>
+                    
+                    <h4>ما نحتاجه منك:</h4>
+                    <ul>
+                        <li>بطاقة الهوية الشخصية</li>
+                        <li>الصيام لمدة 3 ساعات قبل التبرع</li>
+                        <li>شرب كمية كافية من الماء</li>
+                    </ul>
+                    
+                    <h4>الفوائد:</h4>
+                    <ul>
+                        <li>فحص طبي مجاني شامل</li>
+                        <li>تحليل دم مجاني</li>
+                        <li>وجبة صحية مجانية</li>
+                        <li>شهادة تقدير</li>
+                    </ul>
+                    
+                    <h4>فريق طبي متخصص:</h4>
+                    <p>سيكون هناك فريق طبي متخصص من بنك الدم المركزي لضمان سلامة عملية التبرع.</p>
+                    
+                    <p><strong>لأن قطرة دم منك قد تنقذ حياة إنسان!</strong></p>
+                `
+            }
+        };
+        
+        // Open article modal
+        function openArticle(articleId) {
+            const article = articles[articleId];
+            if (!article) return;
+            
+            currentArticle = articleId;
+            
+            document.getElementById('articleTitle').textContent = article.title;
+            document.getElementById('articleDate').textContent = article.date;
+            document.getElementById('articleCategory').innerHTML = `<span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">${article.category}</span>`;
+            document.getElementById('articleViews').textContent = `${article.views} مشاهدة`;
+            document.getElementById('articleLikeCount').textContent = article.likes;
+            
+            // Set article image
+            const imageDiv = document.getElementById('articleImage');
+            imageDiv.innerHTML = `
+                <div class="h-64 bg-gradient-to-r from-blue-400 to-blue-600 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-${getArticleIcon(article.category)} text-white text-6xl"></i>
+                </div>
+            `;
+            
+            document.getElementById('articleBody').innerHTML = article.body;
+            
+            // Show modal
+            const modal = document.getElementById('articleModal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        // Open event registration modal
+        function openEventRegistration(eventId) {
+            const event = events[eventId];
+            if (!event) return;
+            
+            currentEvent = eventId;
+            
+            document.getElementById('eventTitle').textContent = event.title;
+            
+            const eventDetails = document.getElementById('eventDetails');
+            eventDetails.innerHTML = `
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h4 class="font-semibold text-gray-800 mb-2">
+                            <i class="fas fa-calendar text-blue-600 mr-2"></i>
+                            التاريخ والوقت
+                        </h4>
+                        <p class="text-gray-600">${event.date}</p>
+                        <p class="text-gray-600">${event.time}</p>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h4 class="font-semibold text-gray-800 mb-2">
+                            <i class="fas fa-map-marker-alt text-blue-600 mr-2"></i>
+                            المكان
+                        </h4>
+                        <p class="text-gray-600">${event.location}</p>
+                        <p class="text-gray-600">${event.registrations} شخص مسجل</p>
+                    </div>
+                </div>
+                ${event.description}
+            `;
+            
+            // Update registration button
+            const registerBtn = document.getElementById('eventRegisterBtn');
+            registerBtn.onclick = () => openGoogleForm(event.googleForm);
+            
+            // Show modal
+            const modal = document.getElementById('eventModal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        // Close modal
+        function closeModal() {
+            const modals = document.querySelectorAll('.article-modal');
+            modals.forEach(modal => {
+                modal.classList.remove('active');
+            });
+            document.body.style.overflow = 'auto';
+            currentArticle = null;
+            currentEvent = null;
+        }
+        
+        // Close modal when clicking outside
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('article-modal')) {
+                closeModal();
+            }
+        });
+        
+        // Close modal when pressing Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+        
+        // Toggle like
+        function toggleLike(button, articleId) {
+            const likeCount = button.nextElementSibling;
+            const currentCount = parseInt(likeCount.textContent);
+            
+            if (button.classList.contains('liked')) {
+                button.classList.remove('liked');
+                likeCount.textContent = currentCount - 1;
+            } else {
+                button.classList.add('liked');
+                likeCount.textContent = currentCount + 1;
+            }
+        }
+        
+        // Toggle article like in modal
+        function toggleArticleLike() {
+            const likeBtn = document.querySelector('#articleModal .like-btn');
+            const likeCount = document.getElementById('articleLikeCount');
+            const currentCount = parseInt(likeCount.textContent);
+            
+            if (likeBtn.classList.contains('liked')) {
+                likeBtn.classList.remove('liked');
+                likeCount.textContent = currentCount - 1;
+            } else {
+                likeBtn.classList.add('liked');
+                likeCount.textContent = currentCount + 1;
+            }
+        }
+        
+        // Open Google Form
+        function openGoogleForm(formUrl) {
+            if (formUrl) {
+                window.open(formUrl, '_blank');
+            } else {
+                alert('رابط التسجيل غير متوفر حالياً. برجاء المحاولة لاحقاً.');
+            }
+        }
+        
+        // Share functions
+        function shareOnFacebook() {
+            const title = encodeURIComponent(document.getElementById('articleTitle').textContent);
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}&t=${title}`, '_blank');
+        }
+        
+        function shareOnTwitter() {
+            const title = encodeURIComponent(document.getElementById('articleTitle').textContent);
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://twitter.com/intent/tweet?text=${title}&url=${url}`, '_blank');
+        }
+        
+        function shareOnWhatsApp() {
+            const title = document.getElementById('articleTitle').textContent;
+            const text = encodeURIComponent(`${title} - ${window.location.href}`);
+            window.open(`https://wa.me/?text=${text}`, '_blank');
+        }
+        
+        function shareOnTelegram() {
+            const title = document.getElementById('articleTitle').textContent;
+            const text = encodeURIComponent(`${title} - ${window.location.href}`);
+            window.open(`https://t.me/share/url?url=${window.location.href}&text=${text}`, '_blank');
+        }
+        
+        function shareOnLinkedIn() {
+            const title = encodeURIComponent(document.getElementById('articleTitle').textContent);
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}&title=${title}`, '_blank');
+        }
+        
+        // Share event
+        function shareEvent(eventId) {
+            const event = events[eventId || currentEvent];
+            if (!event) return;
+            
+            const text = encodeURIComponent(`${event.title} - ${event.date} - ${window.location.href}`);
+            window.open(`https://wa.me/?text=${text}`, '_blank');
+        }
+        
+        // Get article icon
+        function getArticleIcon(category) {
+            const icons = {
+                'تخرج': 'graduation-cap',
+                'إنجاز': 'trophy',
+                'شراكة': 'handshake',
+                'فعالية': 'calendar',
+                'ورشة': 'tools'
+            };
+            return icons[category] || 'newspaper';
+        }
     </script>
+    
+    <!-- Article Modal -->
+    <div id="articleModal" class="article-modal">
+        <div class="article-content">
+            <div class="p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <h2 id="articleTitle" class="text-3xl font-bold text-gray-800"></h2>
+                    <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700 text-2xl">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <div id="articleMeta" class="flex items-center gap-4 mb-6 text-gray-500">
+                    <span id="articleDate"></span>
+                    <span id="articleCategory"></span>
+                    <span id="articleViews"></span>
+                </div>
+                
+                <div id="articleImage" class="mb-6"></div>
+                
+                <div id="articleBody" class="prose max-w-none text-gray-700 leading-relaxed mb-6"></div>
+                
+                <div class="border-t pt-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">شارك المقال</h3>
+                        <div class="flex items-center gap-4">
+                            <button class="like-btn text-2xl" onclick="toggleArticleLike()">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                            <span id="articleLikeCount" class="text-gray-600"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="social-share">
+                        <a href="#" class="social-btn facebook" onclick="shareOnFacebook()">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-btn twitter" onclick="shareOnTwitter()">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-btn whatsapp" onclick="shareOnWhatsApp()">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="#" class="social-btn telegram" onclick="shareOnTelegram()">
+                            <i class="fab fa-telegram"></i>
+                        </a>
+                        <a href="#" class="social-btn linkedin" onclick="shareOnLinkedIn()">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Event Registration Modal -->
+    <div id="eventModal" class="article-modal">
+        <div class="article-content">
+            <div class="p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <h2 id="eventTitle" class="text-3xl font-bold text-gray-800"></h2>
+                    <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700 text-2xl">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <div id="eventDetails" class="mb-6"></div>
+                
+                <div class="event-registration">
+                    <h3 class="text-xl font-bold text-blue-800 mb-4">
+                        <i class="fas fa-user-plus mr-2"></i>
+                        سجل في الفعالية
+                    </h3>
+                    <p class="text-gray-600 mb-4">
+                        لحجز مكانك في هذه الفعالية، برجاء ملء النموذج التالي:
+                    </p>
+                    <div class="flex gap-4">
+                        <button id="eventRegisterBtn" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition flex-1" onclick="openGoogleForm()">
+                            <i class="fas fa-external-link-alt mr-2"></i>
+                            سجل عبر Google Forms
+                        </button>
+                        <button class="bg-gray-100 text-gray-700 px-6 py-3 rounded-lg hover:bg-gray-200 transition" onclick="shareEvent()">
+                            <i class="fas fa-share mr-2"></i>
+                            شارك الفعالية
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     
     <!-- API and Main JavaScript Files -->
     <script src="js/api.js"></script>
