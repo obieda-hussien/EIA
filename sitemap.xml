@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+    <!-- الصفحة الرئيسية -->
+    <url>
+        <loc>https://egyptian-institute-alexandria.edu.eg/</loc>
+        <lastmod>2024-06-28</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+        <image:image>
+            <image:loc>https://egyptian-institute-alexandria.edu.eg/images/logo.png</image:loc>
+            <image:title>المعهد المصري لأكاديمية الإسكندرية</image:title>
+            <image:caption>شعار المعهد المصري لأكاديمية الإسكندرية للإدارة والمحاسبة</image:caption>
+        </image:image>
+    </url>
+
+    <!-- صفحة عن المعهد -->
+    <url>
+        <loc>https://egyptian-institute-alexandria.edu.eg/about</loc>
+        <lastmod>2024-06-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- صفحة التخصصات -->
+    <url>
+        <loc>https://egyptian-institute-alexandria.edu.eg/departments</loc>
+        <lastmod>2024-06-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- تخصص إدارة الأعمال -->
+    <url>
+        <loc>https://egyptian-institute-alexandria.edu.eg/departments/business-administration</loc>
+        <lastmod>2024-06-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- تخصص المحاسبة والمراجعة -->
+    <url>
+        <loc>https://egyptian-institute-alexandria.edu.eg/departments/accounting-auditing</loc>
+        <lastmod>2024-06-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- تخصص نظم معلومات الأعمال -->
+    <url>
+        <loc>https://egyptian-institute-alexandria.edu.eg/departments/business-information-systems</loc>
+        <lastmod>2024-06-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- صفحة القبول والالتحاق -->
+    <url>
+        <loc>https://egyptian-institute-alexandria.edu.eg/admissions</loc>
+        <lastmod>2024-06-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- صفحة النتائج -->
+    <url>
+        <loc>https://egyptian-institute-alexandria.edu.eg/results</loc>
+        <lastmod>2024-06-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- صفحة الأخبار -->
+    <url>
+        <loc>https://egyptian-institute-alexandria.edu.eg/news</loc>
+        <lastmod>2024-06-28</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- خبر حفل التخرج -->
+    <url>
+        <loc>https://egyptian-institute-alexandria.edu.eg/news/graduation-ceremony-2024</loc>
+        <lastmod>2024-06-15</lastmod>
+        <changefreq>never</changefreq>
+        <priority>0.6</priority>
+        <news:news>
+            <news:publication>
+                <news:name>المعهد المصري لأكاديمية الإسكندرية</news:name>
+                <news:language>ar</news:language>
+            </news:publication>
+            <news:publication_date>2024-06-15</news:publication_date>
+            <news:title>حفل تخرج الدفعة الجديدة 2024</news:title>
+        </news:news>
+    </url>
+
+    <!-- خبر جائزة التميز -->
+    <url>
+        <loc>https://egyptian-institute-alexandria.edu.eg/news/excellence-award-2024</loc>
+        <lastmod>2024-06-10</lastmod>
+        <changefreq>never</changefreq>
+        <priority>0.6</priority>
+        <news:news>
+            <news:publication>
+                <news:name>المعهد المصري لأكاديمية الإسكندرية</news:name>
+                <news:language>ar</news:language>
+            </news:publication>
+            <news:publication_date>2024-06-10</news:publication_date>
+            <news:title>المعهد يحصل على جائزة التميز التعليمي</news:title>
+        </news:news>
+    </url>
+
+    <!-- خبر الشراكات الجديدة -->
+    <url>
+        <loc>https://egyptian-institute-alexandria.edu.eg/news/new-partnerships-2024</loc>
+        <lastmod>2024-06-05</lastmod>
+        <changefreq>never</changefreq>
+        <priority>0.6</priority>
+        <news:news>
+            <news:publication>
+                <news:name>المعهد المصري لأكاديمية الإسكندرية</news:name>
+                <news:language>ar</news:language>
+            </news:publication>
+            <news:publication_date>2024-06-05</news:publication_date>
+            <news:title>شراكات جديدة مع كبرى الشركات</news:title>
+        </news:news>
+    </url>
+
+    <!-- صفحة التواصل -->
+    <url>
+        <loc>https://egyptian-institute-alexandria.edu.eg/contact</loc>
+        <lastmod>2024-06-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- صفحات إضافية -->
+    <url>
+        <loc>https://egyptian-institute-alexandria.edu.eg/faculty</loc>
+        <lastmod>2024-06-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://egyptian-institute-alexandria.edu.eg/student-life</loc>
+        <lastmod>2024-06-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://egyptian-institute-alexandria.edu.eg/alumni</loc>
+        <lastmod>2024-06-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <url>
+        <loc>https://egyptian-institute-alexandria.edu.eg/library</loc>
+        <lastmod>2024-06-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <url>
+        <loc>https://egyptian-institute-alexandria.edu.eg/research</loc>
+        <lastmod>2024-06-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <url>
+        <loc>https://egyptian-institute-alexandria.edu.eg/events</loc>
+        <lastmod>2024-06-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <url>
+        <loc>https://egyptian-institute-alexandria.edu.eg/careers</loc>
+        <lastmod>2024-06-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <!-- صفحات الخدمات -->
+    <url>
+        <loc>https://egyptian-institute-alexandria.edu.eg/services/academic-advising</loc>
+        <lastmod>2024-06-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+
+    <url>
+        <loc>https://egyptian-institute-alexandria.edu.eg/services/student-support</loc>
+        <lastmod>2024-06-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+
+    <url>
+        <loc>https://egyptian-institute-alexandria.edu.eg/services/online-learning</loc>
+        <lastmod>2024-06-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+
+    <!-- الصفحات القانونية -->
+    <url>
+        <loc>https://egyptian-institute-alexandria.edu.eg/privacy-policy</loc>
+        <lastmod>2024-06-28</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+    </url>
+
+    <url>
+        <loc>https://egyptian-institute-alexandria.edu.eg/terms-of-service</loc>
+        <lastmod>2024-06-28</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+    </url>
+
+    <url>
+        <loc>https://egyptian-institute-alexandria.edu.eg/accessibility</loc>
+        <lastmod>2024-06-28</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+    </url>
+
+</urlset>
+

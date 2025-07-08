@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الصفحة غير موجودة - 404 | المعهد المصري لأكاديمية الإسكندرية</title>
+    <meta name="description" content="الصفحة التي تبحث عنها غير موجودة. العودة للصفحة الرئيسية للمعهد المصري لأكاديمية الإسكندرية.">
+    <meta name="robots" content="noindex, nofollow">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 25%, #60a5fa 50%, #93c5fd 75%, #dbeafe 100%);
+        }
+        .floating-animation {
+            animation: floating 3s ease-in-out infinite;
+        }
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="min-h-screen gradient-bg flex items-center justify-center px-4">
+        <div class="max-w-2xl mx-auto text-center">
+            <div class="floating-animation mb-8">
+                <div class="w-32 h-32 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-exclamation-triangle text-white text-6xl"></i>
+                </div>
+            </div>
+            
+            <h1 class="text-8xl font-bold text-white mb-4">404</h1>
+            <h2 class="text-3xl font-bold text-white mb-6">الصفحة غير موجودة</h2>
+            <p class="text-xl text-blue-100 mb-8">
+                عذراً، الصفحة التي تبحث عنها غير موجودة أو تم نقلها إلى مكان آخر.
+            </p>
+            
+            <div class="space-y-4 md:space-y-0 md:space-x-reverse md:space-x-4 md:flex md:justify-center">
+                <a href="/" class="inline-block bg-white text-blue-800 font-bold py-3 px-8 rounded-full hover:bg-blue-50 transition duration-300 transform hover:scale-105">
+                    <i class="fas fa-home mr-2"></i>
+                    العودة للرئيسية
+                </a>
+                <a href="/contact" class="inline-block bg-transparent border-2 border-white text-white font-bold py-3 px-8 rounded-full hover:bg-white hover:text-blue-800 transition duration-300">
+                    <i class="fas fa-envelope mr-2"></i>
+                    تواصل معنا
+                </a>
+            </div>
+            
+            <div class="mt-12 bg-white bg-opacity-10 rounded-2xl p-6 backdrop-blur-sm">
+                <h3 class="text-xl font-bold text-white mb-4">روابط مفيدة</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <a href="/about" class="text-blue-100 hover:text-white transition">
+                        <i class="fas fa-info-circle mr-2"></i>
+                        عن المعهد
+                    </a>
+                    <a href="/departments" class="text-blue-100 hover:text-white transition">
+                        <i class="fas fa-graduation-cap mr-2"></i>
+                        التخصصات
+                    </a>
+                    <a href="/admissions" class="text-blue-100 hover:text-white transition">
+                        <i class="fas fa-user-plus mr-2"></i>
+                        القبول
+                    </a>
+                    <a href="/news" class="text-blue-100 hover:text-white transition">
+                        <i class="fas fa-newspaper mr-2"></i>
+                        الأخبار
+                    </a>
+                </div>
+            </div>
+            
+            <div class="mt-8">
+                <p class="text-blue-100 text-sm">
+                    إذا كنت تعتقد أن هذا خطأ، يرجى 
+                    <a href="/contact" class="text-white underline hover:no-underline">التواصل معنا</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // إعادة توجيه تلقائية بعد 10 ثوانٍ
+        setTimeout(function() {
+            if (confirm('هل تريد العودة للصفحة الرئيسية؟')) {
+                window.location.href = '/';
+            }
+        }, 10000);
+        
+        // تتبع أخطاء 404 في Google Analytics
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'page_not_found', {
+                'page_location': window.location.href,
+                'page_title': '404 - Page Not Found'
+            });
+        }
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,68 @@
+# robots.txt للمعهد المصري لأكاديمية الإسكندرية للإدارة والمحاسبة
+# https://egyptian-institute-alexandria.edu.eg/robots.txt
+
+# السماح لجميع محركات البحث بالوصول للموقع
+User-agent: *
+Allow: /
+
+# منع الوصول للمجلدات الإدارية والحساسة
+Disallow: /admin/
+Disallow: /private/
+Disallow: /temp/
+Disallow: /tmp/
+Disallow: /cache/
+Disallow: /logs/
+Disallow: /backup/
+Disallow: /config/
+Disallow: /includes/
+Disallow: /cgi-bin/
+
+# منع الوصول للملفات الحساسة
+Disallow: /*.log$
+Disallow: /*.sql$
+Disallow: /*.bak$
+Disallow: /*.old$
+Disallow: /*.tmp$
+
+# السماح بالوصول للملفات المهمة
+Allow: /css/
+Allow: /js/
+Allow: /images/
+Allow: /fonts/
+Allow: /assets/
+
+# إعدادات خاصة لمحرك بحث Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+# إعدادات خاصة لمحرك بحث Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# إعدادات خاصة لمحرك بحث Yandex
+User-agent: YandexBot
+Allow: /
+Crawl-delay: 2
+
+# منع محركات البحث السيئة
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# رابط خريطة الموقع
+Sitemap: https://egyptian-institute-alexandria.edu.eg/sitemap.xml
+Sitemap: https://egyptian-institute-alexandria.edu.eg/sitemap-images.xml
+
+# معلومات إضافية
+# الموقع: المعهد المصري لأكاديمية الإسكندرية للإدارة والمحاسبة
+# العنوان: الإسكندرية، مصر
+# الهاتف: +20-3-1234567
+# البريد الإلكتروني: info@egyptian-institute-alexandria.edu.eg
+

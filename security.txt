@@ -1,0 +1,28 @@
+Contact: mailto:security@egyptian-institute-alexandria.edu.eg
+Contact: tel:+20-3-1234567
+Expires: 2025-12-31T23:59:59.000Z
+Encryption: https://egyptian-institute-alexandria.edu.eg/pgp-key.txt
+Acknowledgments: https://egyptian-institute-alexandria.edu.eg/security-acknowledgments
+Preferred-Languages: ar, en
+Canonical: https://egyptian-institute-alexandria.edu.eg/.well-known/security.txt
+Policy: https://egyptian-institute-alexandria.edu.eg/security-policy
+Hiring: https://egyptian-institute-alexandria.edu.eg/careers
+
+# Security Policy for Egyptian Institute for Alexandria Academy
+# المعهد المصري لأكاديمية الإسكندرية للإدارة والمحاسبة
+
+# If you discover a security vulnerability, please report it to us
+# إذا اكتشفت ثغرة أمنية، يرجى الإبلاغ عنها
+
+# We take security seriously and appreciate responsible disclosure
+# نحن نأخذ الأمان على محمل الجد ونقدر الإفصاح المسؤول
+
+# Please do not publicly disclose the issue until we have had a chance to address it
+# يرجى عدم الكشف عن المشكلة علناً حتى نتمكن من معالجتها
+
+# We will acknowledge receipt of your report within 48 hours
+# سنؤكد استلام تقريرك خلال 48 ساعة
+
+# We aim to resolve critical issues within 7 days
+# نهدف إلى حل المشاكل الحرجة خلال 7 أيام
+

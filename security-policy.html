@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سياسة الأمان | المعهد المصري لأكاديمية الإسكندرية</title>
+    <meta name="description" content="سياسة الأمان والخصوصية للمعهد المصري لأكاديمية الإسكندرية. حماية البيانات والمعلومات الشخصية.">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 25%, #60a5fa 50%, #93c5fd 75%, #dbeafe 100%);
+        }
+        .floating-animation {
+            animation: floating 3s ease-in-out infinite;
+        }
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        .content-section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        .toc-link {
+            transition: all 0.3s ease;
+        }
+        .toc-link:hover {
+            background-color: rgba(59, 130, 246, 0.1);
+            transform: translateX(-5px);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header Section -->
+    <div class="gradient-bg py-20">
+        <div class="max-w-4xl mx-auto text-center px-4">
+            <div class="floating-animation mb-8">
+                <div class="w-24 h-24 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-shield-alt text-white text-4xl"></i>
+                </div>
+            </div>
+            
+            <h1 class="text-5xl font-bold text-white mb-4">سياسة الأمان</h1>
+            <p class="text-xl text-blue-100 max-w-2xl mx-auto">
+                التزامنا بحماية بياناتكم ومعلوماتكم الشخصية وضمان أمان منصاتنا التعليمية
+            </p>
+            <div class="mt-6 text-blue-100">
+                <i class="fas fa-calendar-alt mr-2"></i>
+                آخر تحديث: ديسمبر 2024
+            </div>
+        </div>
+    </div>
+
+    <!-- Table of Contents -->
+    <div class="max-w-4xl mx-auto px-4 py-8">
+        <div class="content-section rounded-2xl p-8 shadow-2xl mb-8">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">
+                <i class="fas fa-list text-blue-600 mr-3"></i>
+                فهرس المحتويات
+            </h2>
+            <div class="grid md:grid-cols-2 gap-4">
+                <a href="#data-protection" class="toc-link block p-3 rounded-lg border border-gray-200">
+                    <i class="fas fa-database text-blue-600 mr-2"></i>
+                    حماية البيانات
+                </a>
+                <a href="#access-control" class="toc-link block p-3 rounded-lg border border-gray-200">
+                    <i class="fas fa-key text-green-600 mr-2"></i>
+                    التحكم في الوصول
+                </a>
+                <a href="#incident-response" class="toc-link block p-3 rounded-lg border border-gray-200">
+                    <i class="fas fa-exclamation-triangle text-red-600 mr-2"></i>
+                    الاستجابة للحوادث
+                </a>
+                <a href="#compliance" class="toc-link block p-3 rounded-lg border border-gray-200">
+                    <i class="fas fa-check-circle text-purple-600 mr-2"></i>
+                    الامتثال والمعايير
+                </a>
+            </div>
+        </div>
+
+        <!-- Data Protection Section -->
+        <div id="data-protection" class="content-section rounded-2xl p-8 shadow-2xl mb-8">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">
+                <i class="fas fa-database text-blue-600 mr-3"></i>
+                حماية البيانات
+            </h2>
+            
+            <div class="space-y-6">
+                <div class="bg-blue-50 rounded-lg p-6">
+                    <h3 class="text-xl font-bold text-blue-800 mb-3">التشفير</h3>
+                    <ul class="text-blue-700 space-y-2">
+                        <li><i class="fas fa-check mr-2"></i>تشفير البيانات أثناء النقل باستخدام TLS 1.3</li>
+                        <li><i class="fas fa-check mr-2"></i>تشفير البيانات المخزنة باستخدام AES-256</li>
+                        <li><i class="fas fa-check mr-2"></i>إدارة آمنة لمفاتيح التشفير</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-green-50 rounded-lg p-6">
+                    <h3 class="text-xl font-bold text-green-800 mb-3">النسخ الاحتياطي</h3>
+                    <ul class="text-green-700 space-y-2">
+                        <li><i class="fas fa-check mr-2"></i>نسخ احتياطية يومية مشفرة</li>
+                        <li><i class="fas fa-check mr-2"></i>تخزين في مواقع جغرافية متعددة</li>
+                        <li><i class="fas fa-check mr-2"></i>اختبار دوري لاستعادة البيانات</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Access Control Section -->
+        <div id="access-control" class="content-section rounded-2xl p-8 shadow-2xl mb-8">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">
+                <i class="fas fa-key text-green-600 mr-3"></i>
+                التحكم في الوصول
+            </h2>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">المصادقة</h3>
+                    <ul class="text-gray-700 space-y-2">
+                        <li><i class="fas fa-mobile-alt mr-2 text-blue-600"></i>المصادقة الثنائية (2FA)</li>
+                        <li><i class="fas fa-fingerprint mr-2 text-green-600"></i>المصادقة البيومترية</li>
+                        <li><i class="fas fa-key mr-2 text-purple-600"></i>كلمات مرور قوية</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">الصلاحيات</h3>
+                    <ul class="text-gray-700 space-y-2">
+                        <li><i class="fas fa-user-shield mr-2 text-blue-600"></i>مبدأ الحد الأدنى من الصلاحيات</li>
+                        <li><i class="fas fa-users-cog mr-2 text-green-600"></i>إدارة الأدوار والمجموعات</li>
+                        <li><i class="fas fa-history mr-2 text-purple-600"></i>مراجعة دورية للصلاحيات</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Incident Response Section -->
+        <div id="incident-response" class="content-section rounded-2xl p-8 shadow-2xl mb-8">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">
+                <i class="fas fa-exclamation-triangle text-red-600 mr-3"></i>
+                الاستجابة للحوادث
+            </h2>
+            
+            <div class="space-y-6">
+                <div class="bg-red-50 rounded-lg p-6">
+                    <h3 class="text-xl font-bold text-red-800 mb-3">خطة الاستجابة</h3>
+                    <div class="grid md:grid-cols-4 gap-4 text-center">
+                        <div class="bg-white rounded-lg p-4">
+                            <i class="fas fa-search text-red-600 text-2xl mb-2"></i>
+                            <h4 class="font-bold text-red-800">الكشف</h4>
+                            <p class="text-sm text-red-600">مراقبة مستمرة</p>
+                        </div>
+                        <div class="bg-white rounded-lg p-4">
+                            <i class="fas fa-shield-alt text-orange-600 text-2xl mb-2"></i>
+                            <h4 class="font-bold text-orange-800">الاحتواء</h4>
+                            <p class="text-sm text-orange-600">عزل التهديد</p>
+                        </div>
+                        <div class="bg-white rounded-lg p-4">
+                            <i class="fas fa-tools text-blue-600 text-2xl mb-2"></i>
+                            <h4 class="font-bold text-blue-800">الإصلاح</h4>
+                            <p class="text-sm text-blue-600">معالجة المشكلة</p>
+                        </div>
+                        <div class="bg-white rounded-lg p-4">
+                            <i class="fas fa-chart-line text-green-600 text-2xl mb-2"></i>
+                            <h4 class="font-bold text-green-800">التحسين</h4>
+                            <p class="text-sm text-green-600">تطوير الحماية</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-yellow-50 rounded-lg p-6">
+                    <h3 class="text-xl font-bold text-yellow-800 mb-3">الإبلاغ عن الحوادث</h3>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-yellow-700 mb-2">للإبلاغ عن حادث أمني:</p>
+                            <p class="font-bold text-yellow-800">security@egyptian-institute.edu.eg</p>
+                        </div>
+                        <div class="text-yellow-600">
+                            <i class="fas fa-phone text-3xl"></i>
+                            <p class="text-sm mt-2">24/7 دعم</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Compliance Section -->
+        <div id="compliance" class="content-section rounded-2xl p-8 shadow-2xl mb-8">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">
+                <i class="fas fa-check-circle text-purple-600 mr-3"></i>
+                الامتثال والمعايير
+            </h2>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-purple-50 rounded-lg p-6 text-center">
+                    <i class="fas fa-certificate text-purple-600 text-3xl mb-4"></i>
+                    <h3 class="font-bold text-purple-800 mb-2">ISO 27001</h3>
+                    <p class="text-purple-600">إدارة أمن المعلومات</p>
+                </div>
+                <div class="bg-blue-50 rounded-lg p-6 text-center">
+                    <i class="fas fa-shield-alt text-blue-600 text-3xl mb-4"></i>
+                    <h3 class="font-bold text-blue-800 mb-2">GDPR</h3>
+                    <p class="text-blue-600">حماية البيانات الشخصية</p>
+                </div>
+                <div class="bg-green-50 rounded-lg p-6 text-center">
+                    <i class="fas fa-graduation-cap text-green-600 text-3xl mb-4"></i>
+                    <h3 class="font-bold text-green-800 mb-2">FERPA</h3>
+                    <p class="text-green-600">خصوصية السجلات التعليمية</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="content-section rounded-2xl p-8 shadow-2xl">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">
+                <i class="fas fa-envelope text-blue-600 mr-3"></i>
+                التواصل
+            </h2>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-blue-50 rounded-lg p-6">
+                    <h3 class="font-bold text-blue-800 mb-3">فريق الأمان</h3>
+                    <p class="text-blue-700 mb-2">security@egyptian-institute.edu.eg</p>
+                    <p class="text-blue-600 text-sm">للإبلاغ عن الثغرات والحوادث الأمنية</p>
+                </div>
+                <div class="bg-green-50 rounded-lg p-6">
+                    <h3 class="font-bold text-green-800 mb-3">حماية البيانات</h3>
+                    <p class="text-green-700 mb-2">privacy@egyptian-institute.edu.eg</p>
+                    <p class="text-green-600 text-sm">لاستفسارات الخصوصية وحماية البيانات</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Navigation -->
+    <div class="gradient-bg py-8">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <div class="space-y-4 md:space-y-0 md:space-x-reverse md:space-x-4 md:flex md:justify-center">
+                <a href="/" class="inline-block bg-white text-blue-800 font-bold py-3 px-8 rounded-full hover:bg-blue-50 transition duration-300 transform hover:scale-105">
+                    <i class="fas fa-home mr-2"></i>
+                    العودة للرئيسية
+                </a>
+                <a href="/security-acknowledgments" class="inline-block bg-transparent border-2 border-white text-white font-bold py-3 px-8 rounded-full hover:bg-white hover:text-blue-800 transition duration-300">
+                    <i class="fas fa-heart mr-2"></i>
+                    شكر وتقدير
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scrolling for table of contents
+        document.querySelectorAll('.toc-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

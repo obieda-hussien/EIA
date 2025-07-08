@@ -1,0 +1,65 @@
+# المعهد المصري لأكاديمية الإسكندرية للإدارة والمحاسبة
+# Egyptian Institute for Alexandria Academy of Management and Accounting
+
+/* TEAM */
+    Website Developer: Manus AI, Genspark AI
+    Contact: info [at] egyptian-institute-alexandria.edu.eg
+    Twitter: @EgyptianInstitute
+    From: Alexandria, Egypt
+
+    Academic Director: Dr. Ahmed Mohamed
+    Contact: academic [at] egyptian-institute-alexandria.edu.eg
+    From: Alexandria, Egypt
+
+    IT Manager: Eng. Sarah Hassan
+    Contact: it [at] egyptian-institute-alexandria.edu.eg
+    From: Alexandria, Egypt
+
+/* THANKS */
+    Students and Faculty of Egyptian Institute
+    Alexandria Academy Community
+    All our partners and supporters
+
+/* SITE */
+    Last update: 2024/06/28
+    Language: Arabic / العربية
+    Doctype: HTML5
+    IDE: Visual Studio Code
+    Standards: HTML5, CSS3, ES6+
+    Components: Tailwind CSS, Font Awesome, Google Fonts
+    Software: Apache, PHP, MySQL
+
+/* LOCATION */
+    Address: University Street, Alexandria, Egypt
+    Coordinates: 31.2001, 29.9187
+    Phone: +20-3-1234567
+    Email: info@egyptian-institute-alexandria.edu.eg
+    Website: https://egyptian-institute-alexandria.edu.eg
+
+/* ESTABLISHED */
+    Founded: 1996
+    Students: 4000+
+    Experience: 28+ years
+    Specializations: 3 main departments
+
+/* MISSION */
+    Providing high-quality higher education in management, accounting, and business information systems.
+    تقديم تعليم عالي الجودة في مجالات الإدارة والمحاسبة ونظم معلومات الأعمال.
+
+/* VISION */
+    To be the leading educational institution in Alexandria and Egypt.
+    أن نكون المؤسسة التعليمية الرائدة في الإسكندرية ومصر.
+
+                              _
+                           .-'   `-.
+                          /         \
+                         |           |
+                         |  EGYPTIAN |
+                         | INSTITUTE |
+                         |           |
+                          \         /
+                           `-.___.-'
+
+    "Education is the most powerful weapon which you can use to change the world."
+    "التعليم هو السلاح الأقوى الذي يمكنك استخدامه لتغيير العالم."
+

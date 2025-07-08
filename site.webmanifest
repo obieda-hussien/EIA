@@ -1,0 +1,124 @@
+{
+    "name": "المعهد المصري لأكاديمية الإسكندرية للإدارة والمحاسبة",
+    "short_name": "المعهد المصري",
+    "description": "أفضل معهد تعليم عالي في مصر. تخصصات إدارة الأعمال، المحاسبة والمراجعة، ونظم معلومات الأعمال. أكثر من 4000 طالب و28 سنة خبرة.",
+    "lang": "ar",
+    "dir": "rtl",
+    "start_url": "/",
+    "scope": "/",
+    "display": "standalone",
+    "orientation": "portrait-primary",
+    "theme_color": "#1e40af",
+    "background_color": "#ffffff",
+    "categories": ["education", "business", "university"],
+    "icons": [
+        {
+            "src": "/favicon-16x16.png",
+            "sizes": "16x16",
+            "type": "image/png"
+        },
+        {
+            "src": "/favicon-32x32.png",
+            "sizes": "32x32",
+            "type": "image/png"
+        },
+        {
+            "src": "/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "/apple-touch-icon.png",
+            "sizes": "180x180",
+            "type": "image/png"
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "/screenshots/desktop-home.png",
+            "sizes": "1280x720",
+            "type": "image/png",
+            "form_factor": "wide",
+            "label": "الصفحة الرئيسية للمعهد المصري"
+        },
+        {
+            "src": "/screenshots/mobile-home.png",
+            "sizes": "390x844",
+            "type": "image/png",
+            "form_factor": "narrow",
+            "label": "الصفحة الرئيسية - عرض الهاتف المحمول"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "التخصصات",
+            "short_name": "التخصصات",
+            "description": "تصفح التخصصات المتاحة",
+            "url": "/departments",
+            "icons": [
+                {
+                    "src": "/icons/departments-96x96.png",
+                    "sizes": "96x96"
+                }
+            ]
+        },
+        {
+            "name": "القبول",
+            "short_name": "القبول",
+            "description": "معلومات القبول والالتحاق",
+            "url": "/admissions",
+            "icons": [
+                {
+                    "src": "/icons/admissions-96x96.png",
+                    "sizes": "96x96"
+                }
+            ]
+        },
+        {
+            "name": "النتائج",
+            "short_name": "النتائج",
+            "description": "استعلام عن النتائج",
+            "url": "/results",
+            "icons": [
+                {
+                    "src": "/icons/results-96x96.png",
+                    "sizes": "96x96"
+                }
+            ]
+        },
+        {
+            "name": "التواصل",
+            "short_name": "التواصل",
+            "description": "تواصل مع المعهد",
+            "url": "/contact",
+            "icons": [
+                {
+                    "src": "/icons/contact-96x96.png",
+                    "sizes": "96x96"
+                }
+            ]
+        }
+    ],
+    "related_applications": [
+        {
+            "platform": "play",
+            "url": "https://play.google.com/store/apps/details?id=eg.edu.alexandria.egyptian_institute",
+            "id": "eg.edu.alexandria.egyptian_institute"
+        }
+    ],
+    "prefer_related_applications": false,
+    "edge_side_panel": {
+        "preferred_width": 400
+    },
+    "launch_handler": {
+        "client_mode": "navigate-existing"
+    }
+}
+
