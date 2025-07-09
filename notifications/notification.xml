@@ -1,1 +1,15 @@
-0
+<?xml version="1.0" encoding="utf-8"?>
+<notification>
+    <visual>
+        <binding template="ToastGeneric">
+            <text>المعهد المصري لأكاديمية الإسكندرية</text>
+            <text>يسعدنا إعلامكم بفتح باب التسجيل للفصل الدراسي الجديد. تواصل معنا للحصول على مزيد من التفاصيل.</text>
+            <image placement="appLogoOverride" src="/android-chrome-192x192.png"/>
+        </binding>
+    </visual>
+    <actions>
+        <action content="عرض التفاصيل" arguments="details"/>
+        <action content="تسجيل الآن" arguments="register"/>
+    </actions>
+    <audio src="ms-winsoundevent:Notification.Default"/>
+</notification>
