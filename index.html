@@ -450,6 +450,26 @@
             h3 { font-size: 18px; }
             h4 { font-size: 16px; }
         }
+        
+        /* تحسينات للموبايل والتمرير في النوافذ المنبثقة */
+        @media (max-width: 768px) {
+            #eventRegistrationModal .bg-white {
+                margin: 1rem;
+                max-height: calc(100vh - 2rem);
+                min-height: 0;
+            }
+            
+            #eventRegistrationModal .flex-1 {
+                -webkit-overflow-scrolling: touch;
+                overflow-y: auto;
+            }
+        }
+        
+        /* تحسين عام للتمرير في النوافذ المنبثقة */
+        #eventRegistrationModal .overflow-y-auto {
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior: contain;
+        }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -2412,8 +2432,8 @@
     </div>
 
     <!-- Event Registration Modal -->
-    <div id="eventRegistrationModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
-        <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-hidden flex flex-col">
+    <div id="eventRegistrationModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center md:p-4 sm:p-2 p-1">
+        <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-hidden flex flex-col md:m-4 sm:m-2 m-1">
             <div class="sticky top-0 bg-white border-b border-gray-200 p-6 flex justify-between items-center flex-shrink-0">
                 <h2 id="eventModalTitle" class="text-2xl font-bold text-gray-800">تسجيل في الفعالية</h2>
                 <button onclick="closeEventRegistrationModal()" class="text-gray-500 hover:text-gray-700 text-2xl">
