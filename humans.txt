@@ -2,7 +2,7 @@
 # Egyptian Institute for Alexandria Academy of Management and Accounting
 
 /* TEAM */
-    Website Developer: Manus AI, Genspark AI
+    Website Developer: Advanced AI Development Team
     Contact: info [at] egyptian-institute-alexandria.edu.eg
     Twitter: @EgyptianInstitute
     From: Alexandria, Egypt
@@ -15,24 +15,31 @@
     Contact: it [at] egyptian-institute-alexandria.edu.eg
     From: Alexandria, Egypt
 
+    Student Affairs: Ms. Fatima Al-Zahra
+    Contact: students [at] egyptian-institute-alexandria.edu.eg
+    From: Alexandria, Egypt
+
 /* THANKS */
     Students and Faculty of Egyptian Institute
     Alexandria Academy Community
     All our partners and supporters
+    Local businesses and organizations
+    Alumni network worldwide
 
 /* SITE */
-    Last update: 2024/06/28
+    Last update: 2024/12/19
     Language: Arabic / العربية
     Doctype: HTML5
     IDE: Visual Studio Code
-    Standards: HTML5, CSS3, ES6+
+    Standards: HTML5, CSS3, ES6+, WCAG 2.1 AA
     Components: Tailwind CSS, Font Awesome, Google Fonts
     Software: Apache, PHP, MySQL
+    Features: Progressive Web App, Responsive Design, Accessibility
 
 /* LOCATION */
-    Address: University Street, Alexandria, Egypt
+    Address: 3 شارع الملك، أمام محطة قطار المنتزه, Alexandria, Egypt
     Coordinates: 31.2001, 29.9187
-    Phone: +20-3-1234567
+    Phone: +20-3-3236661
     Email: info@egyptian-institute-alexandria.edu.eg
     Website: https://egyptian-institute-alexandria.edu.eg
 
@@ -41,14 +48,29 @@
     Students: 4000+
     Experience: 28+ years
     Specializations: 3 main departments
+    Graduations: 150+ batches
+    Success Rate: 95%+
 
 /* MISSION */
     Providing high-quality higher education in management, accounting, and business information systems.
+    Building skilled professionals ready for the modern business world.
     تقديم تعليم عالي الجودة في مجالات الإدارة والمحاسبة ونظم معلومات الأعمال.
+    إعداد كوادر مهنية مؤهلة لسوق العمل الحديث.
 
 /* VISION */
-    To be the leading educational institution in Alexandria and Egypt.
-    أن نكون المؤسسة التعليمية الرائدة في الإسكندرية ومصر.
+    To be the leading educational institution in Alexandria and Egypt for business education.
+    Creating tomorrow's business leaders through innovative education and practical training.
+    أن نكون المؤسسة التعليمية الرائدة في الإسكندرية ومصر في مجال التعليم التجاري.
+    إعداد قادة الأعمال المستقبليين من خلال التعليم المبتكر والتدريب العملي.
+
+/* FEATURES */
+    ✓ Modern Sidebar Navigation
+    ✓ Progressive Web App
+    ✓ Mobile Responsive Design
+    ✓ Accessibility Compliant
+    ✓ Fast Loading Performance
+    ✓ SEO Optimized
+    ✓ Secure & Reliable
 
                               _
                            .-'   `-.
@@ -62,4 +84,5 @@
 
     "Education is the most powerful weapon which you can use to change the world."
     "التعليم هو السلاح الأقوى الذي يمكنك استخدامه لتغيير العالم."
+    - Nelson Mandela
 

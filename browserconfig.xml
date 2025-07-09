@@ -14,7 +14,7 @@
         </badge>
         <notification>
             <polling-uri src="/notifications/notification.xml"/>
-            <frequency>60</frequency>
+            <frequency>360</frequency>
             <cycle>1</cycle>
         </notification>
     </msapplication>

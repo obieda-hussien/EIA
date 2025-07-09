@@ -470,13 +470,167 @@
             -webkit-overflow-scrolling: touch;
             overscroll-behavior: contain;
         }
+        
+        /* Modern Sidebar Styles */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 300px;
+            height: 100vh;
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            box-shadow: -2px 0 15px rgba(0, 0, 0, 0.1);
+            transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        
+        .sidebar.active {
+            right: 0;
+        }
+        
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 999;
+        }
+        
+        .sidebar-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .sidebar-header {
+            padding: 2rem 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+        
+        .sidebar-nav {
+            padding: 1rem 0;
+        }
+        
+        .sidebar-nav-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-right: 3px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .sidebar-nav-item:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: right 0.3s ease;
+        }
+        
+        .sidebar-nav-item:hover:before,
+        .sidebar-nav-item.active:before {
+            right: 0;
+        }
+        
+        .sidebar-nav-item:hover,
+        .sidebar-nav-item.active {
+            color: white;
+            border-right-color: #60a5fa;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .sidebar-nav-item i {
+            width: 24px;
+            margin-left: 1rem;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+        
+        .sidebar-close {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .sidebar-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(90deg);
+        }
+        
+        .menu-toggle {
+            background: none;
+            border: none;
+            color: #1e40af;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .menu-toggle:hover {
+            background: rgba(30, 64, 175, 0.1);
+            transform: scale(1.1);
+        }
+        
+        .top-header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+        
+        @media (min-width: 1024px) {
+            .sidebar {
+                right: -350px;
+                width: 350px;
+            }
+        }
+        
+        /* تحسينات للموبايل */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 280px;
+                right: -280px;
+            }
+            
+            .sidebar-nav-item {
+                padding: 0.75rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
     </style>
 </head>
 <body class="bg-gray-50">
-    <!-- Header Navigation -->
-    <header class="bg-white shadow-lg sticky top-0 z-50">
+    <!-- Top Header with Sidebar Toggle -->
+    <header class="top-header">
         <div class="container mx-auto px-4">
-            <nav class="flex justify-between items-center py-4">
+            <div class="flex justify-between items-center py-4">
                 <div class="flex items-center space-x-reverse space-x-4">
                     <div class="w-12 h-12 bg-gradient-to-r from-blue-600 to-blue-800 rounded-full flex items-center justify-center">
                         <i class="fas fa-graduation-cap text-white text-xl"></i>
@@ -487,35 +641,76 @@
                     </div>
                 </div>
                 
-                <div class="hidden md:flex space-x-reverse space-x-8">
-                    <a href="#home" class="nav-link active text-blue-800 font-semibold py-2" onclick="showSection('home')">الرئيسية</a>
-                    <a href="#about" class="nav-link text-gray-700 hover:text-blue-800 py-2" onclick="showSection('about')">عن المعهد</a>
-                    <a href="#departments" class="nav-link text-gray-700 hover:text-blue-800 py-2" onclick="showSection('departments')">الأقسام</a>
-                    <a href="#admissions" class="nav-link text-gray-700 hover:text-blue-800 py-2" onclick="showSection('admissions')">القبول</a>
-                    <a href="#results" class="nav-link text-gray-700 hover:text-blue-800 py-2" onclick="showSection('results')">النتائج</a>
-                    <a href="#news" class="nav-link text-gray-700 hover:text-blue-800 py-2" onclick="showSection('news')">الأخبار</a>
-                    <a href="#contact" class="nav-link text-gray-700 hover:text-blue-800 py-2" onclick="showSection('contact')">التواصل</a>
-                </div>
-                
-                <button class="md:hidden text-blue-800" onclick="toggleMobileMenu()">
-                    <i class="fas fa-bars text-xl"></i>
+                <button class="menu-toggle" onclick="toggleSidebar()">
+                    <i class="fas fa-bars"></i>
                 </button>
-            </nav>
-            
-            <!-- Mobile Menu -->
-            <div id="mobileMenu" class="hidden md:hidden bg-white border-t py-4">
-                <div class="flex flex-col space-y-4">
-                    <a href="#home" class="text-blue-800 font-semibold" onclick="showSection('home'); toggleMobileMenu()">الرئيسية</a>
-                    <a href="#about" class="text-gray-700" onclick="showSection('about'); toggleMobileMenu()">عن المعهد</a>
-                    <a href="#departments" class="text-gray-700" onclick="showSection('departments'); toggleMobileMenu()">الأقسام</a>
-                    <a href="#admissions" class="text-gray-700" onclick="showSection('admissions'); toggleMobileMenu()">القبول</a>
-                    <a href="#results" class="text-gray-700" onclick="showSection('results'); toggleMobileMenu()">النتائج</a>
-                    <a href="#news" class="text-gray-700" onclick="showSection('news'); toggleMobileMenu()">الأخبار</a>
-                    <a href="#contact" class="text-gray-700" onclick="showSection('contact'); toggleMobileMenu()">التواصل</a>
-                </div>
             </div>
         </div>
     </header>
+
+    <!-- Sidebar Navigation -->
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+    <aside class="sidebar" id="sidebar">
+        <button class="sidebar-close" onclick="closeSidebar()">
+            <i class="fas fa-times"></i>
+        </button>
+        
+        <div class="sidebar-header">
+            <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-graduation-cap text-white text-2xl"></i>
+            </div>
+            <h2 class="text-white text-xl font-bold mb-2">المعهد المصري</h2>
+            <p class="text-blue-100 text-sm">أكاديمية الإسكندرية للإدارة والمحاسبة</p>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <a href="#home" class="sidebar-nav-item active" onclick="showSection('home'); closeSidebar()">
+                <i class="fas fa-home"></i>
+                <span>الرئيسية</span>
+            </a>
+            <a href="#about" class="sidebar-nav-item" onclick="showSection('about'); closeSidebar()">
+                <i class="fas fa-university"></i>
+                <span>عن المعهد</span>
+            </a>
+            <a href="#departments" class="sidebar-nav-item" onclick="showSection('departments'); closeSidebar()">
+                <i class="fas fa-graduation-cap"></i>
+                <span>الأقسام</span>
+            </a>
+            <a href="#admissions" class="sidebar-nav-item" onclick="showSection('admissions'); closeSidebar()">
+                <i class="fas fa-user-plus"></i>
+                <span>القبول</span>
+            </a>
+            <a href="#results" class="sidebar-nav-item" onclick="showSection('results'); closeSidebar()">
+                <i class="fas fa-chart-line"></i>
+                <span>النتائج</span>
+            </a>
+            <a href="#news" class="sidebar-nav-item" onclick="showSection('news'); closeSidebar()">
+                <i class="fas fa-newspaper"></i>
+                <span>الأخبار</span>
+            </a>
+            <a href="#contact" class="sidebar-nav-item" onclick="showSection('contact'); closeSidebar()">
+                <i class="fas fa-envelope"></i>
+                <span>التواصل</span>
+            </a>
+        </nav>
+        
+        <div class="px-6 py-4 mt-auto border-t border-white border-opacity-20">
+            <div class="text-center text-white text-opacity-80 text-sm">
+                <p class="mb-2">تواصل معنا</p>
+                <div class="flex justify-center space-x-reverse space-x-4">
+                    <a href="tel:+2033236661" class="text-white hover:text-blue-200 transition">
+                        <i class="fas fa-phone"></i>
+                    </a>
+                    <a href="mailto:info@egyptian-institute-alexandria.edu.eg" class="text-white hover:text-blue-200 transition">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="#" class="text-white hover:text-blue-200 transition">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </aside>
 
     <!-- Home Section -->
     <section id="home" class="section-active">
@@ -3043,15 +3238,15 @@
                 targetSection.classList.add('section-active');
             }
             
-            // Update navigation links
-            const navLinks = document.querySelectorAll('.nav-link');
-            navLinks.forEach(link => {
+            // Update sidebar navigation links
+            const sidebarLinks = document.querySelectorAll('.sidebar-nav-item');
+            sidebarLinks.forEach(link => {
                 link.classList.remove('active');
             });
             
-            // Add active class to the correct navigation link
-            const activeLink = document.querySelector(`a[href="#${sectionId}"]`);
-            if (activeLink && activeLink.classList.contains('nav-link')) {
+            // Add active class to the correct sidebar navigation link
+            const activeLink = document.querySelector(`.sidebar-nav-item[href="#${sectionId}"]`);
+            if (activeLink) {
                 activeLink.classList.add('active');
             }
             
@@ -3064,9 +3259,34 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
         
+        // Sidebar Functions
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+            
+            // Prevent body scroll when sidebar is open
+            if (sidebar.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        }
+        
+        function closeSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        // Legacy function for compatibility
         function toggleMobileMenu() {
-            const mobileMenu = document.getElementById('mobileMenu');
-            mobileMenu.classList.toggle('hidden');
+            toggleSidebar();
         }
         
         // Smooth scrolling for internal links
@@ -3127,6 +3347,50 @@
                     }, 2000);
                 });
             }
+            
+            // Keyboard navigation for sidebar
+            document.addEventListener('keydown', function(e) {
+                // Close sidebar with Escape key
+                if (e.key === 'Escape') {
+                    closeSidebar();
+                }
+                
+                // Toggle sidebar with Ctrl+M (Menu)
+                if (e.ctrlKey && e.key === 'm') {
+                    e.preventDefault();
+                    toggleSidebar();
+                }
+            });
+            
+            // Add focus management for sidebar
+            const sidebar = document.getElementById('sidebar');
+            const sidebarLinks = sidebar.querySelectorAll('.sidebar-nav-item');
+            
+            sidebar.addEventListener('keydown', function(e) {
+                const focusedElement = document.activeElement;
+                const currentIndex = Array.from(sidebarLinks).indexOf(focusedElement);
+                
+                switch(e.key) {
+                    case 'ArrowDown':
+                        e.preventDefault();
+                        const nextIndex = (currentIndex + 1) % sidebarLinks.length;
+                        sidebarLinks[nextIndex].focus();
+                        break;
+                    case 'ArrowUp':
+                        e.preventDefault();
+                        const prevIndex = currentIndex === 0 ? sidebarLinks.length - 1 : currentIndex - 1;
+                        sidebarLinks[prevIndex].focus();
+                        break;
+                    case 'Home':
+                        e.preventDefault();
+                        sidebarLinks[0].focus();
+                        break;
+                    case 'End':
+                        e.preventDefault();
+                        sidebarLinks[sidebarLinks.length - 1].focus();
+                        break;
+                }
+            });
             
             // Contact form submission
             const contactForm = document.querySelector('#contact form');
