@@ -141,7 +141,7 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
     
-    # إعادة توجيه HTTP إلى HTTPS
+    # إعادة توجيه HTTP إلى HTTPS مع الحفاظ على hash fragments
     RewriteCond %{HTTPS} off
     RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
     
@@ -158,8 +158,14 @@
     RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
     RewriteRule ^ /%1 [NC,L,R=301]
     
-    # الصفحة الرئيسية
+    # الصفحة الرئيسية - دعم hash navigation
     RewriteRule ^$ index.html [L]
+    
+    # دعم hash navigation للـ SPA
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} !^/api
+    RewriteRule ^.*$ index.html [L]
     
     # معالجة الأخطاء 404
     ErrorDocument 404 /404.html
