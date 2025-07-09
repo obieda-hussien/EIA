@@ -488,13 +488,13 @@
                 </div>
                 
                 <div class="hidden md:flex space-x-reverse space-x-8">
-                    <a href="#" class="nav-link active text-blue-800 font-semibold py-2" onclick="showSection('home')">الرئيسية</a>
-                    <a href="#" class="nav-link text-gray-700 hover:text-blue-800 py-2" onclick="showSection('about')">عن المعهد</a>
-                    <a href="#" class="nav-link text-gray-700 hover:text-blue-800 py-2" onclick="showSection('departments')">الأقسام</a>
-                    <a href="#" class="nav-link text-gray-700 hover:text-blue-800 py-2" onclick="showSection('admissions')">القبول</a>
-                    <a href="#" class="nav-link text-gray-700 hover:text-blue-800 py-2" onclick="showSection('results')">النتائج</a>
-                    <a href="#" class="nav-link text-gray-700 hover:text-blue-800 py-2" onclick="showSection('news')">الأخبار</a>
-                    <a href="#" class="nav-link text-gray-700 hover:text-blue-800 py-2" onclick="showSection('contact')">التواصل</a>
+                    <a href="#home" class="nav-link active text-blue-800 font-semibold py-2" onclick="showSection('home')">الرئيسية</a>
+                    <a href="#about" class="nav-link text-gray-700 hover:text-blue-800 py-2" onclick="showSection('about')">عن المعهد</a>
+                    <a href="#departments" class="nav-link text-gray-700 hover:text-blue-800 py-2" onclick="showSection('departments')">الأقسام</a>
+                    <a href="#admissions" class="nav-link text-gray-700 hover:text-blue-800 py-2" onclick="showSection('admissions')">القبول</a>
+                    <a href="#results" class="nav-link text-gray-700 hover:text-blue-800 py-2" onclick="showSection('results')">النتائج</a>
+                    <a href="#news" class="nav-link text-gray-700 hover:text-blue-800 py-2" onclick="showSection('news')">الأخبار</a>
+                    <a href="#contact" class="nav-link text-gray-700 hover:text-blue-800 py-2" onclick="showSection('contact')">التواصل</a>
                 </div>
                 
                 <button class="md:hidden text-blue-800" onclick="toggleMobileMenu()">
@@ -505,13 +505,13 @@
             <!-- Mobile Menu -->
             <div id="mobileMenu" class="hidden md:hidden bg-white border-t py-4">
                 <div class="flex flex-col space-y-4">
-                    <a href="#" class="text-blue-800 font-semibold" onclick="showSection('home'); toggleMobileMenu()">الرئيسية</a>
-                    <a href="#" class="text-gray-700" onclick="showSection('about'); toggleMobileMenu()">عن المعهد</a>
-                    <a href="#" class="text-gray-700" onclick="showSection('departments'); toggleMobileMenu()">الأقسام</a>
-                    <a href="#" class="text-gray-700" onclick="showSection('admissions'); toggleMobileMenu()">القبول</a>
-                    <a href="#" class="text-gray-700" onclick="showSection('results'); toggleMobileMenu()">النتائج</a>
-                    <a href="#" class="text-gray-700" onclick="showSection('news'); toggleMobileMenu()">الأخبار</a>
-                    <a href="#" class="text-gray-700" onclick="showSection('contact'); toggleMobileMenu()">التواصل</a>
+                    <a href="#home" class="text-blue-800 font-semibold" onclick="showSection('home'); toggleMobileMenu()">الرئيسية</a>
+                    <a href="#about" class="text-gray-700" onclick="showSection('about'); toggleMobileMenu()">عن المعهد</a>
+                    <a href="#departments" class="text-gray-700" onclick="showSection('departments'); toggleMobileMenu()">الأقسام</a>
+                    <a href="#admissions" class="text-gray-700" onclick="showSection('admissions'); toggleMobileMenu()">القبول</a>
+                    <a href="#results" class="text-gray-700" onclick="showSection('results'); toggleMobileMenu()">النتائج</a>
+                    <a href="#news" class="text-gray-700" onclick="showSection('news'); toggleMobileMenu()">الأخبار</a>
+                    <a href="#contact" class="text-gray-700" onclick="showSection('contact'); toggleMobileMenu()">التواصل</a>
                 </div>
             </div>
         </div>
@@ -2527,11 +2527,11 @@
                 <div>
                     <h4 class="text-lg font-bold mb-4">روابط سريعة</h4>
                     <div class="space-y-2">
-                        <a href="#" class="block text-gray-400 hover:text-white transition" onclick="showSection('about')">عن المعهد</a>
-                        <a href="#" class="block text-gray-400 hover:text-white transition" onclick="showSection('departments')">التخصصات</a>
-                        <a href="#" class="block text-gray-400 hover:text-white transition" onclick="showSection('admissions')">القبول</a>
-                        <a href="#" class="block text-gray-400 hover:text-white transition" onclick="showSection('results')">النتائج</a>
-                        <a href="#" class="block text-gray-400 hover:text-white transition" onclick="showSection('news')">الأخبار</a>
+                        <a href="#about" class="block text-gray-400 hover:text-white transition" onclick="showSection('about')">عن المعهد</a>
+                        <a href="#departments" class="block text-gray-400 hover:text-white transition" onclick="showSection('departments')">التخصصات</a>
+                        <a href="#admissions" class="block text-gray-400 hover:text-white transition" onclick="showSection('admissions')">القبول</a>
+                        <a href="#results" class="block text-gray-400 hover:text-white transition" onclick="showSection('results')">النتائج</a>
+                        <a href="#news" class="block text-gray-400 hover:text-white transition" onclick="showSection('news')">الأخبار</a>
                     </div>
                 </div>
                 
@@ -3049,8 +3049,16 @@
                 link.classList.remove('active');
             });
             
-            // Add active class to clicked link
-            event.target.classList.add('active');
+            // Add active class to the correct navigation link
+            const activeLink = document.querySelector(`a[href="#${sectionId}"]`);
+            if (activeLink && activeLink.classList.contains('nav-link')) {
+                activeLink.classList.add('active');
+            }
+            
+            // Update URL hash without page reload
+            if (window.location.hash !== `#${sectionId}`) {
+                window.history.pushState(null, null, `#${sectionId}`);
+            }
             
             // Scroll to top
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -3238,6 +3246,31 @@
             
             counters.forEach(counter => counterObserver.observe(counter));
         });
+        
+        // Hash navigation support
+        function initializeHashNavigation() {
+            // Handle hash changes
+            window.addEventListener('hashchange', function() {
+                const hash = window.location.hash.substring(1);
+                if (hash && document.getElementById(hash)) {
+                    showSection(hash);
+                }
+            });
+            
+            // Initialize page with hash if present
+            window.addEventListener('load', function() {
+                const hash = window.location.hash.substring(1);
+                if (hash && document.getElementById(hash)) {
+                    showSection(hash);
+                } else {
+                    // Default to home if no hash
+                    showSection('home');
+                }
+            });
+        }
+        
+        // Initialize hash navigation
+        initializeHashNavigation();
     </script>
     
     <!-- API and Main JavaScript Files -->
