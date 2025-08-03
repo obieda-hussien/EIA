@@ -4219,23 +4219,27 @@
             type();
         }
         
-        // Counter animation for statistics
-        function animateCounter(element, target, duration = 2000) {
-            let start = 0;
-            const increment = target / (duration / 16);
-            
-            function count() {
-                start += increment;
-                if (start < target) {
-                    element.textContent = Math.ceil(start);
-                    requestAnimationFrame(count);
-                } else {
-                    element.textContent = target;
-                }
-            }
-            
-            count();
-        }
+        // Counter animation function (disabled)
+        // function animateCounter(element, target, duration = 2000) {
+        //     const originalText = element.textContent;
+        //     const numericPart = parseInt(originalText.replace(/\D/g, ''));
+        //     const suffix = originalText.replace(/\d/g, '');
+        //     
+        //     let start = 0;
+        //     const increment = numericPart / (duration / 16);
+        //     
+        //     function count() {
+        //         start += increment;
+        //         if (start < numericPart) {
+        //             element.textContent = Math.ceil(start) + suffix;
+        //             requestAnimationFrame(count);
+        //         } else {
+        //             element.textContent = originalText;
+        //         }
+        //     }
+        //     
+        //     count();
+        // }
         
         // Initialize animations when page loads
         window.addEventListener('load', function() {
@@ -4245,19 +4249,17 @@
             // Initialize scroll-triggered animations
             initializeScrollAnimations();
             
-            // Animate counters when they come into view
-            const counters = document.querySelectorAll('.stats-counter');
-            const counterObserver = new IntersectionObserver(function(entries) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting && !entry.target.dataset.animated) {
-                        const target = parseInt(entry.target.textContent.replace(/\D/g, ''));
-                        animateCounter(entry.target, target);
-                        entry.target.dataset.animated = 'true';
-                    }
-                });
-            });
+            // Counter animation is disabled to prevent display issues
+            // const counterObserver = new IntersectionObserver(function(entries) {
+            //     entries.forEach(entry => {
+            //         if (entry.isIntersecting && !entry.target.dataset.animated) {
+            //             animateCounter(entry.target);
+            //             entry.target.dataset.animated = 'true';
+            //         }
+            //     });
+            // });
             
-            counters.forEach(counter => counterObserver.observe(counter));
+            // counters.forEach(counter => counterObserver.observe(counter));
             
             // Add particle background to hero section
             addParticleBackground();
@@ -4606,8 +4608,6 @@
         initializeHashNavigation();
     </script>
     
-    <!-- API and Main JavaScript Files -->
-    <script src="js/api.js"></script>
-    <script src="js/main.js"></script>
+
 </body>
 </html>
