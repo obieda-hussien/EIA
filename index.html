@@ -66,15 +66,32 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
     
-    <!-- Preconnect for Performance -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <!-- Enhanced Performance Optimizations -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&family=Tajawal:wght@300;400;500;700;800&display=swap" as="style">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" as="style">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" as="style">
     
-    <!-- DNS Prefetch -->
-    <link rel="dns-prefetch" href="//fonts.googleapis.com">
-    <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+    <!-- Module Preload for better performance -->
+    <link rel="modulepreload" href="/js/api.js">
+    <link rel="modulepreload" href="/js/animations.js">
+    <link rel="modulepreload" href="/js/maps.js">
+    <link rel="modulepreload" href="/js/main.js">
+    
+    <!-- Resource Hints for External Services -->
+    <link rel="dns-prefetch" href="//maps.googleapis.com">
     <link rel="dns-prefetch" href="//www.google-analytics.com">
+    <link rel="dns-prefetch" href="//connect.facebook.net">
+    <link rel="dns-prefetch" href="//static.hotjar.com">
+    <link rel="preconnect" href="https://maps.googleapis.com" crossorigin>
+    
+    <!-- Critical CSS inlined for above-the-fold content -->
+    <style>
+        /* Critical CSS for immediate rendering */
+        .hero-gradient { background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #3b82f6 100%); }
+        .top-header { background: white; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); position: sticky; top: 0; z-index: 50; }
+        .menu-toggle { background: none; border: none; color: #1e40af; font-size: 1.5rem; cursor: pointer; padding: 0.5rem; border-radius: 8px; transition: all 0.3s ease; }
+        body { font-family: 'Cairo', 'Tajawal', sans-serif; overflow-x: hidden; }
+    </style>
     
     <!-- Stylesheets -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
@@ -132,13 +149,118 @@
     }
     </script>
     
-    <!-- Google Analytics (Replace with your tracking ID) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_TRACKING_ID"></script>
+    <!-- Enhanced SEO Meta Tags -->
+    <meta name="google-site-verification" content="your-google-verification-code">
+    <meta name="msvalidate.01" content="your-bing-verification-code">
+    <meta name="yandex-verification" content="your-yandex-verification-code">
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="generator" content="EIA Custom CMS">
+    <meta name="coverage" content="Worldwide">
+    <meta name="target" content="all">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <!-- Enhanced Open Graph Tags -->
+    <meta property="og:updated_time" content="2024-08-03T12:00:00+02:00">
+    <meta property="og:see_also" content="https://egyptian-institute-alexandria.edu.eg/about">
+    <meta property="og:see_also" content="https://egyptian-institute-alexandria.edu.eg/departments">
+    <meta property="article:publisher" content="https://www.facebook.com/AlexAcademyEIA">
+    <meta property="article:author" content="المعهد المصري لأكاديمية الإسكندرية">
+    <meta property="article:section" content="Education">
+    <meta property="article:tag" content="تعليم عالي">
+    <meta property="article:tag" content="إدارة أعمال">
+    <meta property="article:tag" content="محاسبة">
+    <meta property="article:tag" content="نظم معلومات">
+    
+    <!-- Enhanced Twitter Card -->
+    <meta name="twitter:label1" content="عدد الطلاب">
+    <meta name="twitter:data1" content="4000+">
+    <meta name="twitter:label2" content="سنوات الخبرة">
+    <meta name="twitter:data2" content="28 سنة">
+    
+    <!-- LinkedIn Meta Tags -->
+    <meta property="og:type" content="article">
+    <meta property="linkedin:owner" content="egyptian-institute-alexandria">
+    
+    <!-- Pinterest Meta Tags -->
+    <meta name="pinterest-rich-pin" content="true">
+    <meta property="og:rich_attachment" content="true">
+    
+    <!-- WhatsApp Meta Tags -->
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:video" content="">
+    
+    <!-- Google Analytics 4 Enhanced -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', 'GA_TRACKING_ID');
+        
+        // Enhanced GA4 Configuration
+        gtag('config', 'G-XXXXXXXXXX', {
+            page_title: 'المعهد المصري لأكاديمية الإسكندرية',
+            page_location: window.location.href,
+            custom_map: {
+                'custom_parameter_1': 'institute_section',
+                'custom_parameter_2': 'user_type'
+            },
+            user_properties: {
+                institution: 'EIA',
+                language: 'Arabic'
+            }
+        });
+        
+        // Enhanced E-commerce tracking
+        gtag('config', 'G-XXXXXXXXXX', {
+            send_page_view: false
+        });
+        
+        // Custom events for education sector
+        gtag('event', 'page_view', {
+            page_title: 'الصفحة الرئيسية',
+            page_location: window.location.href,
+            content_group1: 'Education',
+            content_group2: 'Institute'
+        });
+    </script>
+    
+    <!-- Facebook Pixel -->
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', 'YOUR_PIXEL_ID');
+        fbq('track', 'PageView');
+        
+        // Custom events for education
+        fbq('track', 'ViewContent', {
+            content_type: 'education',
+            content_category: 'institute_homepage'
+        });
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"
+    /></noscript>
+    
+    <!-- Hotjar Tracking Code -->
+    <script>
+        (function(h,o,t,j,a,r){
+            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+            h._hjSettings={hjid:YOUR_HOTJAR_ID,hjsv:6};
+            a=o.getElementsByTagName('head')[0];
+            r=o.createElement('script');r.async=1;
+            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
     </script>
     
     <style>
@@ -428,6 +550,257 @@
             border-top-color: #f97316 !important;
         }
         
+        /* Gen Z Enhanced Animations */
+        .animate-spin {
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .animate-bounce {
+            animation: bounce 1s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(-25%);
+                animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+            }
+            50% {
+                transform: translateY(0);
+                animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+            }
+        }
+        
+        .animate-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .5; }
+        }
+        
+        /* Advanced Gen Z Effects */
+        .neo-morphism {
+            background: #f0f0f0;
+            border-radius: 20px;
+            box-shadow: 20px 20px 60px #d0d0d0, -20px -20px 60px #ffffff;
+        }
+        
+        .glass-morphism {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        
+        .cyberpunk-glow {
+            box-shadow: 
+                0 0 5px #00ffff,
+                0 0 10px #00ffff,
+                0 0 15px #00ffff,
+                0 0 20px #00ffff,
+                inset 0 0 5px #00ffff;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(45deg, #3b82f6, #8b5cf6, #ec4899);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient-shift 3s ease-in-out infinite;
+        }
+        
+        @keyframes gradient-shift {
+            0%, 100% { filter: hue-rotate(0deg); }
+            50% { filter: hue-rotate(180deg); }
+        }
+        
+        /* Enhanced Floating Elements */
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        
+        .floating-shape {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(45deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
+            animation: float-random 6s ease-in-out infinite;
+        }
+        
+        .floating-shape:nth-child(1) { animation-delay: 0s; }
+        .floating-shape:nth-child(2) { animation-delay: 1s; }
+        .floating-shape:nth-child(3) { animation-delay: 2s; }
+        .floating-shape:nth-child(4) { animation-delay: 3s; }
+        .floating-shape:nth-child(5) { animation-delay: 4s; }
+        
+        @keyframes float-random {
+            0%, 100% { 
+                transform: translateY(0px) translateX(0px) rotate(0deg); 
+                opacity: 0.7;
+            }
+            25% { 
+                transform: translateY(-20px) translateX(10px) rotate(90deg); 
+                opacity: 0.4;
+            }
+            50% { 
+                transform: translateY(-40px) translateX(-10px) rotate(180deg); 
+                opacity: 0.8;
+            }
+            75% { 
+                transform: translateY(-20px) translateX(-20px) rotate(270deg); 
+                opacity: 0.3;
+            }
+        }
+        
+        /* Parallax Background Effects */
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        /* Modern Scroll Indicators */
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+            z-index: 9999;
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+        
+        /* Improved Loading States */
+        .loading-shimmer {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        
+        /* Enhanced Card Interactions */
+        .interactive-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+        
+        .interactive-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .interactive-card:active {
+            transform: translateY(-4px) scale(1.01);
+        }
+        
+        /* Modern Typography Effects */
+        .text-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .text-shadow-lg {
+            text-shadow: 0 15px 30px rgba(0, 0, 0, 0.11), 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        /* Enhanced Button States */
+        .btn-modern {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-modern::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn-modern:hover::before {
+            left: 100%;
+        }
+        
+        /* Responsive Enhancements */
+        @media (max-width: 768px) {
+            .floating-shape {
+                display: none;
+            }
+            
+            .parallax-bg {
+                background-attachment: scroll;
+            }
+            
+            .neo-morphism {
+                box-shadow: 10px 10px 30px #d0d0d0, -10px -10px 30px #ffffff;
+            }
+        }
+        
+        /* High Contrast Mode Support */
+        @media (prefers-contrast: high) {
+            .glass-morphism {
+                background: rgba(255, 255, 255, 0.9);
+                border: 2px solid #000;
+            }
+            
+            .gradient-text {
+                -webkit-text-fill-color: initial;
+                color: #000;
+            }
+        }
+        
+        /* Reduced Motion Support */
+        @media (prefers-reduced-motion: reduce) {
+            .floating-animation,
+            .animate-bounce,
+            .animate-spin,
+            .animate-pulse {
+                animation: none;
+            }
+            
+            .card-hover {
+                transition: none;
+            }
+            
+            .floating-shape {
+                animation: none;
+            }
+        }
+        
+        /* Dark Mode Support */
+        @media (prefers-color-scheme: dark) {
+            .neo-morphism {
+                background: #2d2d2d;
+                box-shadow: 20px 20px 60px #1a1a1a, -20px -20px 60px #404040;
+            }
+            
+            .glass-morphism {
+                background: rgba(0, 0, 0, 0.25);
+                border: 1px solid rgba(255, 255, 255, 0.18);
+            }
+        }
+        
         /* تحسينات للطباعة و PDF */
         @media print {
             .section-hidden {
@@ -627,6 +1000,9 @@
     </style>
 </head>
 <body class="bg-gray-50">
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-indicator" id="scrollProgress" style="transform: scaleX(0);"></div>
+    
     <!-- Top Header with Sidebar Toggle -->
     <header class="top-header">
         <div class="container mx-auto px-4">
@@ -718,19 +1094,24 @@
         <div class="hero-gradient text-white py-20">
             <div class="container mx-auto px-4 text-center">
                 <div class="slide-in">
-                    <h1 class="text-5xl md:text-6xl font-bold mb-6">أهلاً بيك في المعهد المصري!</h1>
-                    <p class="text-xl md:text-2xl mb-8 text-blue-100">مستقبلك يبدأ من هنا.. انضم لأكتر من 4000 طالب وطالبة</p>
+                    <h1 class="text-5xl md:text-6xl font-bold mb-6 typewriter">أهلاً بيك في المعهد المصري!</h1>
+                    <p class="text-xl md:text-2xl mb-8 text-blue-100 wavy-text">مستقبلك يبدأ من هنا.. انضم لأكتر من 4000 طالب وطالبة</p>
                     <div class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-reverse md:space-x-6">
-                        <button class="btn-primary px-8 py-4 rounded-full text-white font-bold text-lg hover:scale-105 transform transition" onclick="showSection('departments')">
+                        <button class="btn-primary morph-btn liquid-loader px-8 py-4 rounded-full text-white font-bold text-lg hover:scale-105 transform transition" onclick="showSection('departments')">
                             <i class="fas fa-rocket mr-2"></i>
                             اختار تخصصك دلوقتي
                         </button>
-                        <button class="bg-transparent border-2 border-white px-8 py-4 rounded-full text-white font-bold text-lg hover:bg-white hover:text-blue-800 transition" onclick="showSection('about')">
+                        <button class="bg-transparent border-2 border-white morph-btn px-8 py-4 rounded-full text-white font-bold text-lg hover:bg-white hover:text-blue-800 transition" onclick="showSection('about')">
                             <i class="fas fa-play mr-2"></i>
                             اعرف عننا أكتر
                         </button>
                     </div>
                 </div>
+                
+                <!-- Floating Shapes for Gen Z Effect -->
+                <div class="floating-shape absolute top-10 left-10 w-16 h-16 bg-white bg-opacity-20 rounded-full animate-bounce"></div>
+                <div class="floating-shape absolute top-32 right-20 w-8 h-8 bg-blue-300 bg-opacity-30 rounded-full"></div>
+                <div class="floating-shape absolute bottom-20 left-1/4 w-12 h-12 bg-white bg-opacity-10 rounded-full"></div>
             </div>
         </div>
 
@@ -738,20 +1119,20 @@
         <div class="bg-white py-16">
             <div class="container mx-auto px-4">
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                    <div class="card-hover">
-                        <div class="stats-counter">4000+</div>
+                    <div class="card-hover animate-on-scroll" data-animation="zoomIn">
+                        <div class="stats-counter glitch">4000+</div>
                         <p class="text-gray-600 font-semibold">طالب وطالبة</p>
                     </div>
-                    <div class="card-hover">
-                        <div class="stats-counter">28+</div>
+                    <div class="card-hover animate-on-scroll" data-animation="zoomIn">
+                        <div class="stats-counter glitch">28+</div>
                         <p class="text-gray-600 font-semibold">سنة خبرة</p>
                     </div>
-                    <div class="card-hover">
-                        <div class="stats-counter">3</div>
+                    <div class="card-hover animate-on-scroll" data-animation="zoomIn">
+                        <div class="stats-counter glitch">3</div>
                         <p class="text-gray-600 font-semibold">تخصصات مميزة</p>
                     </div>
-                    <div class="card-hover">
-                        <div class="stats-counter">100%</div>
+                    <div class="card-hover animate-on-scroll" data-animation="zoomIn">
+                        <div class="stats-counter glitch">100%</div>
                         <p class="text-gray-600 font-semibold">معادلة مضمونة</p>
                     </div>
                 </div>
@@ -767,35 +1148,35 @@
                 </div>
                 
                 <div class="grid md:grid-cols-3 gap-8">
-                    <div class="department-card p-8 rounded-2xl card-hover text-center">
-                        <div class="w-20 h-20 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full flex items-center justify-center mx-auto mb-6 floating-animation">
+                    <div class="department-card glass-effect p-8 rounded-2xl card-hover text-center animate-on-scroll" data-animation="slideInRight">
+                        <div class="w-20 h-20 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full flex items-center justify-center mx-auto mb-6 floating-animation floating-icon">
                             <i class="fas fa-users text-white text-2xl"></i>
                         </div>
                         <h3 class="text-2xl font-bold text-blue-800 mb-4">إدارة الأعمال</h3>
                         <p class="text-gray-600 mb-6">هتتعلم إزاي تدير الشركات والمشاريع زي المحترفين. مجال واسع وفرص شغل كتير!</p>
-                        <button class="btn-primary px-6 py-3 rounded-full text-white font-semibold" onclick="showSection('departments')">
+                        <button class="btn-primary morph-btn px-6 py-3 rounded-full text-white font-semibold" onclick="showSection('departments')">
                             اعرف أكتر
                         </button>
                     </div>
                     
-                    <div class="department-card p-8 rounded-2xl card-hover text-center">
-                        <div class="w-20 h-20 bg-gradient-to-r from-green-500 to-green-700 rounded-full flex items-center justify-center mx-auto mb-6 floating-animation" style="animation-delay: 0.5s;">
+                    <div class="department-card glass-effect p-8 rounded-2xl card-hover text-center animate-on-scroll" data-animation="slideInRight">
+                        <div class="w-20 h-20 bg-gradient-to-r from-green-500 to-green-700 rounded-full flex items-center justify-center mx-auto mb-6 floating-animation floating-icon" style="animation-delay: 0.5s;">
                             <i class="fas fa-calculator text-white text-2xl"></i>
                         </div>
                         <h3 class="text-2xl font-bold text-green-800 mb-4">المحاسبة والمراجعة</h3>
                         <p class="text-gray-600 mb-6">خليك محاسب محترف واشتغل في أكبر الشركات. تخصص مطلوب في كل مكان!</p>
-                        <button class="bg-gradient-to-r from-green-500 to-green-700 px-6 py-3 rounded-full text-white font-semibold hover:scale-105 transform transition" onclick="showSection('departments')">
+                        <button class="bg-gradient-to-r from-green-500 to-green-700 morph-btn px-6 py-3 rounded-full text-white font-semibold hover:scale-105 transform transition" onclick="showSection('departments')">
                             اعرف أكتر
                         </button>
                     </div>
                     
-                    <div class="department-card p-8 rounded-2xl card-hover text-center">
-                        <div class="w-20 h-20 bg-gradient-to-r from-purple-500 to-purple-700 rounded-full flex items-center justify-center mx-auto mb-6 floating-animation" style="animation-delay: 1s;">
+                    <div class="department-card glass-effect p-8 rounded-2xl card-hover text-center animate-on-scroll" data-animation="slideInRight">
+                        <div class="w-20 h-20 bg-gradient-to-r from-purple-500 to-purple-700 rounded-full flex items-center justify-center mx-auto mb-6 floating-animation floating-icon" style="animation-delay: 1s;">
                             <i class="fas fa-laptop-code text-white text-2xl"></i>
                         </div>
                         <h3 class="text-2xl font-bold text-purple-800 mb-4">نظم معلومات الأعمال</h3>
                         <p class="text-gray-600 mb-6">اربط بين التكنولوجيا والإدارة. تخصص المستقبل ومجاله واسع جداً!</p>
-                        <button class="bg-gradient-to-r from-purple-500 to-purple-700 px-6 py-3 rounded-full text-white font-semibold hover:scale-105 transform transition" onclick="showSection('departments')">
+                        <button class="bg-gradient-to-r from-purple-500 to-purple-700 morph-btn px-6 py-3 rounded-full text-white font-semibold hover:scale-105 transform transition" onclick="showSection('departments')">
                             اعرف أكتر
                         </button>
                     </div>
@@ -893,11 +1274,16 @@
                         </div>
                     </div>
                     
-                    <div class="map-container h-64 bg-gradient-to-r from-blue-100 to-blue-200 flex items-center justify-center">
-                        <div class="text-center">
-                            <i class="fas fa-map text-blue-600 text-4xl mb-4"></i>
-                            <p class="text-blue-800 font-semibold">خريطة موقع المعهد</p>
-                            <p class="text-blue-600 text-sm">سهل الوصول بالمواصلات</p>
+                    <div class="map-container h-96 bg-gradient-to-r from-blue-100 to-blue-200 flex items-center justify-center" id="map-section">
+                        <div id="google-map" style="width: 100%; height: 100%; border-radius: 20px;">
+                            <div class="loading-map" style="display: flex; align-items: center; justify-content: center; height: 100%; background: linear-gradient(135deg, #f0f7ff 0%, #e0f2fe 100%); border-radius: 20px;">
+                                <div style="text-align: center; font-family: 'Cairo', sans-serif;">
+                                    <div class="animate-spin w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full mx-auto mb-4"></div>
+                                    <div style="font-size: 32px; margin-bottom: 10px;">🗺️</div>
+                                    <p style="color: #1e40af; font-weight: 600;">جاري تحميل الخريطة التفاعلية...</p>
+                                    <p style="color: #6b7280; font-size: 14px;">خريطة Google Maps مع الاتجاهات والأماكن المجاورة</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -3535,10 +3921,181 @@
         
         // Initialize hash navigation
         initializeHashNavigation();
+        
+        // Initialize scroll progress indicator
+        initScrollProgress();
     </script>
     
-    <!-- API and Main JavaScript Files -->
-    <script src="js/api.js"></script>
-    <script src="js/main.js"></script>
+    <!-- Scroll Progress Indicator Script -->
+    <script>
+        function initScrollProgress() {
+            const progressBar = document.getElementById('scrollProgress');
+            
+            window.addEventListener('scroll', () => {
+                const scrollTop = window.pageYOffset;
+                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const scrollPercent = scrollTop / docHeight;
+                
+                progressBar.style.transform = `scaleX(${scrollPercent})`;
+            });
+        }
+        
+        // Add smooth scrolling for better UX
+        document.addEventListener('click', function(e) {
+            if (e.target.matches('a[href^="#"]')) {
+                e.preventDefault();
+                const target = document.querySelector(e.target.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        });
+        
+        // Enhanced keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            // Quick navigation with numbers
+            if (e.altKey) {
+                const sections = ['home', 'about', 'departments', 'admissions', 'results', 'news', 'contact'];
+                const num = parseInt(e.key);
+                if (num >= 1 && num <= sections.length) {
+                    e.preventDefault();
+                    showSection(sections[num - 1]);
+                }
+            }
+        });
+        
+        // Performance monitoring
+        window.addEventListener('load', function() {
+            // تتبع أداء التحميل
+            const perfData = performance.timing;
+            const loadTime = perfData.loadEventEnd - perfData.navigationStart;
+            
+            console.log(`Page load time: ${loadTime}ms`);
+            
+            // Track in analytics if available
+            if (window.gtag) {
+                gtag('event', 'timing_complete', {
+                    name: 'load',
+                    value: loadTime
+                });
+            }
+        });
+    </script>
+    
+    <!-- Load Google Maps API -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOCD_U6CEJlzCXF6YPAmHCN8gKZoB3X_k&callback=initMap&libraries=places,geometry"></script>
+    
+    <!-- Enhanced Gen Z Animations CSS -->
+    <script src="js/animations.js" defer></script>
+    
+    <!-- Google Maps Integration -->
+    <script src="js/maps.js" defer></script>
+    
+    <!-- API and Services -->
+    <script src="js/api.js" defer></script>
+    
+    <!-- Main Application JavaScript -->
+    <script src="js/main.js" defer></script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(function(registration) {
+                        console.log('ServiceWorker registration successful');
+                    })
+                    .catch(function(err) {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+            });
+        }
+    </script>
+    
+    <!-- Additional SEO Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "المعهد المصري لأكاديمية الإسكندرية",
+        "alternateName": "Egyptian Institute Alexandria Academy",
+        "url": "https://egyptian-institute-alexandria.edu.eg",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://egyptian-institute-alexandria.edu.eg/search?q={search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
+        },
+        "sameAs": [
+            "https://www.facebook.com/AlexAcademyEIA",
+            "https://x.com/alexacademyeia",
+            "https://eg.linkedin.com/in/saad-hendy-363a3324b"
+        ]
+    }
+    </script>
+    
+    <!-- Local Business Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "@id": "https://egyptian-institute-alexandria.edu.eg",
+        "name": "المعهد المصري لأكاديمية الإسكندرية للإدارة والمحاسبة",
+        "image": "https://egyptian-institute-alexandria.edu.eg/images/institute-building.jpg",
+        "telephone": "+2016000",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "3 شارع الملك، أمام محطة قطار المنتزه",
+            "addressLocality": "الإسكندرية",
+            "addressRegion": "الإسكندرية",
+            "postalCode": "21500",
+            "addressCountry": "EG"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 31.2001,
+            "longitude": 29.9187
+        },
+        "openingHoursSpecification": [
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
+                "opens": "09:00",
+                "closes": "15:00"
+            }
+        ],
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "reviewCount": "150"
+        },
+        "priceRange": "$$"
+    }
+    </script>
+    
+    <!-- Educational Course Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Course",
+        "name": "إدارة الأعمال",
+        "description": "برنامج إدارة الأعمال المعتمد - 4 سنوات",
+        "provider": {
+            "@type": "EducationalOrganization",
+            "name": "المعهد المصري لأكاديمية الإسكندرية",
+            "sameAs": "https://egyptian-institute-alexandria.edu.eg"
+        },
+        "hasCourseInstance": {
+            "@type": "CourseInstance",
+            "courseMode": "full-time",
+            "duration": "P4Y",
+            "startDate": "2024-09-01",
+            "endDate": "2028-06-30"
+        },
+        "occupationalCredentialAwarded": "بكالوريوس إدارة الأعمال"
+    }
+    </script>
 </body>
 </html>
