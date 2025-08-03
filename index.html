@@ -337,6 +337,15 @@
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(135deg, #f0f7ff 0%, #e0f2fe 100%);
+        }
+        
+        .map-loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            background: linear-gradient(135deg, #f0f7ff 0%, #e0f2fe 100%);
         }
         
         /* إضافة الألوان البرتقالية المفقودة */
@@ -893,11 +902,13 @@
                         </div>
                     </div>
                     
-                    <div class="map-container h-64 bg-gradient-to-r from-blue-100 to-blue-200 flex items-center justify-center">
-                        <div class="text-center">
-                            <i class="fas fa-map text-blue-600 text-4xl mb-4"></i>
-                            <p class="text-blue-800 font-semibold">خريطة موقع المعهد</p>
-                            <p class="text-blue-600 text-sm">سهل الوصول بالمواصلات</p>
+                    <div id="map-container-home" class="map-container h-64">
+                        <div class="map-loading">
+                            <div class="text-center">
+                                <i class="fas fa-map text-blue-600 text-4xl mb-4"></i>
+                                <p class="text-blue-800 font-semibold">خريطة موقع المعهد</p>
+                                <p class="text-blue-600 text-sm">سهل الوصول بالمواصلات</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -2030,20 +2041,22 @@
                 <div class="mt-20">
                     <h2 class="text-4xl font-bold text-center text-gray-800 mb-12">موقع المعهد على الخريطة</h2>
                     
-                    <div class="map-container h-96 bg-gradient-to-r from-blue-100 to-blue-200 flex items-center justify-center">
-                        <div class="text-center">
-                            <i class="fas fa-map-marked-alt text-blue-600 text-6xl mb-4"></i>
-                            <h3 class="text-2xl font-bold text-blue-800 mb-2">خريطة تفاعلية</h3>
-                            <p class="text-blue-600 mb-4">3 شارع الملك - أمام محطة قطار المنتزة</p>
-                            <div class="flex flex-col md:flex-row justify-center space-y-2 md:space-y-0 md:space-x-reverse md:space-x-4">
-                                <button class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition">
-                                    <i class="fas fa-directions mr-2"></i>
-                                    احصل على الاتجاهات
-                                </button>
-                                <button class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition">
-                                    <i class="fas fa-street-view mr-2"></i>
-                                    عرض الشارع
-                                </button>
+                    <div id="map-container-contact" class="map-container h-96">
+                        <div class="map-loading">
+                            <div class="text-center">
+                                <i class="fas fa-map-marked-alt text-blue-600 text-6xl mb-4"></i>
+                                <h3 class="text-2xl font-bold text-blue-800 mb-2">خريطة تفاعلية</h3>
+                                <p class="text-blue-600 mb-4">3 شارع الملك - أمام محطة قطار المنتزة</p>
+                                <div class="flex flex-col md:flex-row justify-center space-y-2 md:space-y-0 md:space-x-reverse md:space-x-4">
+                                    <button onclick="getDirections()" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition directions-btn">
+                                        <i class="fas fa-directions mr-2"></i>
+                                        احصل على الاتجاهات
+                                    </button>
+                                    <button onclick="openStreetView()" class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition street-view-btn">
+                                        <i class="fas fa-street-view mr-2"></i>
+                                        عرض الشارع
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
