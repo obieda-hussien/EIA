@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <!-- Basic Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- Primary Meta Tags -->
+    <title>لوحة إدارة المعهد المصري - إدارة المحتوى والطلاب</title>
+    <meta name="title" content="لوحة إدارة المعهد المصري - إدارة المحتوى والطلاب">
+    <meta name="description" content="لوحة تحكم شاملة لإدارة محتوى موقع المعهد المصري وإدارة الطلاب والنتائج والفعاليات">
+    <meta name="robots" content="noindex, nofollow">
+    
+    <!-- Stylesheets -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-database-compat.js"></script>
+    
+    <style>
+        body {
+            font-family: 'Cairo', 'Tajawal', sans-serif;
+        }
+        
+        .sidebar {
+            transition: transform 0.3s ease;
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+        }
+        
+        .sidebar.collapsed {
+            transform: translateX(100%);
+        }
+        
+        .content-area {
+            transition: margin-right 0.3s ease;
+        }
+        
+        .content-area.expanded {
+            margin-right: 0;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, #1e40af, #3b82f6);
+            border: none;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(45deg, #1e3a8a, #1e40af);
+            transform: translateY(-2px);
+        }
+        
+        .loading {
+            display: none;
+        }
+        
+        .loading.active {
+            display: block;
+        }
+        
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            padding: 16px;
+            border-radius: 8px;
+            color: white;
+            font-weight: 600;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: all 0.3s ease;
+        }
+        
+        .notification.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .notification.success {
+            background: #10b981;
+        }
+        
+        .notification.error {
+            background: #ef4444;
+        }
+        
+        .notification.info {
+            background: #3b82f6;
+        }
+        
+        .stats-card {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-left: 4px solid #3b82f6;
+        }
+        
+        .stats-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #1e40af;
+        }
+        
+        .editor-toolbar {
+            border-bottom: 1px solid #e5e7eb;
+            padding: 10px;
+            background: #f9fafb;
+        }
+        
+        .editor-content {
+            min-height: 300px;
+            padding: 15px;
+            border: none;
+            outline: none;
+            font-family: inherit;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+        
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 12px;
+            max-width: 800px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                position: fixed;
+                top: 0;
+                right: 0;
+                height: 100vh;
+                z-index: 100;
+            }
+            
+            .content-area {
+                margin-right: 0 !important;
+            }
+            
+            .desktop-only {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading active fixed inset-0 bg-white z-50 flex items-center justify-center">
+        <div class="text-center">
+            <div class="w-16 h-16 border-4 border-blue-200 border-top-blue-600 rounded-full animate-spin mx-auto mb-4"></div>
+            <p class="text-blue-800 font-semibold">جاري تحميل لوحة الإدارة...</p>
+        </div>
+    </div>
+
+    <!-- Top Header -->
+    <header class="bg-white shadow-md fixed top-0 left-0 right-0 z-40">
+        <div class="flex items-center justify-between px-6 py-4">
+            <div class="flex items-center space-x-reverse space-x-4">
+                <button id="sidebarToggle" class="md:hidden text-blue-600 hover:text-blue-800">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+                <div class="flex items-center space-x-reverse space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-r from-blue-600 to-blue-800 rounded-full flex items-center justify-center">
+                        <i class="fas fa-graduation-cap text-white"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-lg font-bold text-blue-800">لوحة إدارة المعهد المصري</h1>
+                        <p class="text-sm text-gray-600">إدارة المحتوى والطلاب</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex items-center space-x-reverse space-x-4">
+                <!-- Notifications -->
+                <div class="relative">
+                    <button id="notificationsBtn" class="relative p-2 text-gray-600 hover:text-blue-600 rounded-full hover:bg-blue-50">
+                        <i class="fas fa-bell text-xl"></i>
+                        <span id="notificationBadge" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center hidden">0</span>
+                    </button>
+                </div>
+                
+                <!-- User Menu -->
+                <div class="relative">
+                    <button id="userMenuBtn" class="flex items-center space-x-reverse space-x-2 text-gray-700 hover:text-blue-600">
+                        <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
+                            <i class="fas fa-user text-white text-sm"></i>
+                        </div>
+                        <span id="adminName" class="font-semibold desktop-only">المسؤول</span>
+                        <i class="fas fa-chevron-down text-sm desktop-only"></i>
+                    </button>
+                    
+                    <div id="userMenu" class="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border hidden">
+                        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 rounded-t-lg">
+                            <i class="fas fa-user mr-2"></i>
+                            الملف الشخصي
+                        </a>
+                        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-50">
+                            <i class="fas fa-cog mr-2"></i>
+                            الإعدادات
+                        </a>
+                        <hr class="my-1">
+                        <a href="../index.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-50">
+                            <i class="fas fa-home mr-2"></i>
+                            الموقع الرئيسي
+                        </a>
+                        <button id="logoutBtn" class="w-full text-right px-4 py-2 text-red-600 hover:bg-red-50 rounded-b-lg">
+                            <i class="fas fa-sign-out-alt mr-2"></i>
+                            تسجيل الخروج
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="sidebar fixed top-0 right-0 h-full w-64 text-white z-30">
+        <div class="p-6 border-b border-white border-opacity-20 mt-20">
+            <h2 class="text-xl font-bold">القائمة الرئيسية</h2>
+        </div>
+        
+        <nav class="mt-6">
+            <a href="#dashboard" class="nav-item active flex items-center px-6 py-3 text-white hover:bg-white hover:bg-opacity-10 transition" data-section="dashboard">
+                <i class="fas fa-tachometer-alt ml-3"></i>
+                <span>لوحة التحكم</span>
+            </a>
+            
+            <a href="#articles" class="nav-item flex items-center px-6 py-3 text-white hover:bg-white hover:bg-opacity-10 transition" data-section="articles">
+                <i class="fas fa-newspaper ml-3"></i>
+                <span>إدارة المقالات</span>
+            </a>
+            
+            <a href="#news" class="nav-item flex items-center px-6 py-3 text-white hover:bg-white hover:bg-opacity-10 transition" data-section="news">
+                <i class="fas fa-bullhorn ml-3"></i>
+                <span>إدارة الأخبار</span>
+            </a>
+            
+            <a href="#events" class="nav-item flex items-center px-6 py-3 text-white hover:bg-white hover:bg-opacity-10 transition" data-section="events">
+                <i class="fas fa-calendar-alt ml-3"></i>
+                <span>إدارة الفعاليات</span>
+            </a>
+            
+            <a href="#students" class="nav-item flex items-center px-6 py-3 text-white hover:bg-white hover:bg-opacity-10 transition" data-section="students">
+                <i class="fas fa-users ml-3"></i>
+                <span>إدارة الطلاب</span>
+            </a>
+            
+            <a href="#results" class="nav-item flex items-center px-6 py-3 text-white hover:bg-white hover:bg-opacity-10 transition" data-section="results">
+                <i class="fas fa-chart-line ml-3"></i>
+                <span>إدارة النتائج</span>
+            </a>
+            
+            <a href="#notifications" class="nav-item flex items-center px-6 py-3 text-white hover:bg-white hover:bg-opacity-10 transition" data-section="notifications">
+                <i class="fas fa-bell ml-3"></i>
+                <span>الإشعارات</span>
+            </a>
+            
+            <a href="#settings" class="nav-item flex items-center px-6 py-3 text-white hover:bg-white hover:bg-opacity-10 transition" data-section="settings">
+                <i class="fas fa-cog ml-3"></i>
+                <span>الإعدادات</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main id="mainContent" class="content-area mr-64 mt-20 p-6">
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="section active">
+            <div class="mb-6">
+                <h1 class="text-3xl font-bold text-gray-800 mb-2">لوحة التحكم</h1>
+                <p class="text-gray-600">مرحباً بك في لوحة إدارة المعهد المصري</p>
+            </div>
+            
+            <!-- Statistics Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <div class="stats-card card p-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-600 text-sm">إجمالي المقالات</p>
+                            <p id="totalArticles" class="stats-number">0</p>
+                        </div>
+                        <div class="text-blue-600 text-3xl">
+                            <i class="fas fa-newspaper"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stats-card card p-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-600 text-sm">الأخبار المنشورة</p>
+                            <p id="totalNews" class="stats-number">0</p>
+                        </div>
+                        <div class="text-green-600 text-3xl">
+                            <i class="fas fa-bullhorn"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stats-card card p-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-600 text-sm">الفعاليات القادمة</p>
+                            <p id="upcomingEvents" class="stats-number">0</p>
+                        </div>
+                        <div class="text-purple-600 text-3xl">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stats-card card p-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-600 text-sm">إجمالي الطلاب</p>
+                            <p id="totalStudents" class="stats-number">0</p>
+                        </div>
+                        <div class="text-orange-600 text-3xl">
+                            <i class="fas fa-users"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Recent Activity -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div class="card p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">آخر المقالات المنشورة</h3>
+                    <div id="recentArticles" class="space-y-3">
+                        <!-- Articles will be loaded here -->
+                    </div>
+                </div>
+                
+                <div class="card p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">الفعاليات القادمة</h3>
+                    <div id="recentEvents" class="space-y-3">
+                        <!-- Events will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Articles Section -->
+        <section id="articles" class="section hidden">
+            <div class="flex justify-between items-center mb-6">
+                <div>
+                    <h1 class="text-3xl font-bold text-gray-800 mb-2">إدارة المقالات</h1>
+                    <p class="text-gray-600">إضافة وتعديل وحذف المقالات</p>
+                </div>
+                <button id="addArticleBtn" class="btn-primary text-white px-6 py-3 rounded-lg font-semibold">
+                    <i class="fas fa-plus mr-2"></i>
+                    إضافة مقال جديد
+                </button>
+            </div>
+            
+            <!-- Articles Table -->
+            <div class="card p-6">
+                <div class="overflow-x-auto">
+                    <table class="w-full table-auto">
+                        <thead>
+                            <tr class="border-b border-gray-200">
+                                <th class="text-right py-3 px-4 font-semibold text-gray-700">العنوان</th>
+                                <th class="text-right py-3 px-4 font-semibold text-gray-700">التصنيف</th>
+                                <th class="text-right py-3 px-4 font-semibold text-gray-700">المؤلف</th>
+                                <th class="text-right py-3 px-4 font-semibold text-gray-700">الحالة</th>
+                                <th class="text-right py-3 px-4 font-semibold text-gray-700">تاريخ الإنشاء</th>
+                                <th class="text-center py-3 px-4 font-semibold text-gray-700">الإجراءات</th>
+                            </tr>
+                        </thead>
+                        <tbody id="articlesTableBody">
+                            <!-- Articles will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- News Section -->
+        <section id="news" class="section hidden">
+            <div class="flex justify-between items-center mb-6">
+                <div>
+                    <h1 class="text-3xl font-bold text-gray-800 mb-2">إدارة الأخبار</h1>
+                    <p class="text-gray-600">إضافة وتعديل الأخبار والإعلانات</p>
+                </div>
+                <button id="addNewsBtn" class="btn-primary text-white px-6 py-3 rounded-lg font-semibold">
+                    <i class="fas fa-plus mr-2"></i>
+                    إضافة خبر جديد
+                </button>
+            </div>
+            
+            <!-- News Table -->
+            <div class="card p-6">
+                <div class="overflow-x-auto">
+                    <table class="w-full table-auto">
+                        <thead>
+                            <tr class="border-b border-gray-200">
+                                <th class="text-right py-3 px-4 font-semibold text-gray-700">العنوان</th>
+                                <th class="text-right py-3 px-4 font-semibold text-gray-700">النوع</th>
+                                <th class="text-right py-3 px-4 font-semibold text-gray-700">الحالة</th>
+                                <th class="text-right py-3 px-4 font-semibold text-gray-700">تاريخ النشر</th>
+                                <th class="text-center py-3 px-4 font-semibold text-gray-700">الإجراءات</th>
+                            </tr>
+                        </thead>
+                        <tbody id="newsTableBody">
+                            <!-- News will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Events Section -->
+        <section id="events" class="section hidden">
+            <div class="flex justify-between items-center mb-6">
+                <div>
+                    <h1 class="text-3xl font-bold text-gray-800 mb-2">إدارة الفعاليات</h1>
+                    <p class="text-gray-600">إضافة وإدارة الفعاليات والمؤتمرات</p>
+                </div>
+                <button id="addEventBtn" class="btn-primary text-white px-6 py-3 rounded-lg font-semibold">
+                    <i class="fas fa-plus mr-2"></i>
+                    إضافة فعالية جديدة
+                </button>
+            </div>
+            
+            <!-- Events Table -->
+            <div class="card p-6">
+                <div class="overflow-x-auto">
+                    <table class="w-full table-auto">
+                        <thead>
+                            <tr class="border-b border-gray-200">
+                                <th class="text-right py-3 px-4 font-semibold text-gray-700">اسم الفعالية</th>
+                                <th class="text-right py-3 px-4 font-semibold text-gray-700">التاريخ</th>
+                                <th class="text-right py-3 px-4 font-semibold text-gray-700">المكان</th>
+                                <th class="text-right py-3 px-4 font-semibold text-gray-700">التسجيلات</th>
+                                <th class="text-right py-3 px-4 font-semibold text-gray-700">الحالة</th>
+                                <th class="text-center py-3 px-4 font-semibold text-gray-700">الإجراءات</th>
+                            </tr>
+                        </thead>
+                        <tbody id="eventsTableBody">
+                            <!-- Events will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Students Section -->
+        <section id="students" class="section hidden">
+            <div class="flex justify-between items-center mb-6">
+                <div>
+                    <h1 class="text-3xl font-bold text-gray-800 mb-2">إدارة الطلاب</h1>
+                    <p class="text-gray-600">إضافة وإدارة بيانات الطلاب</p>
+                </div>
+                <button id="addStudentBtn" class="btn-primary text-white px-6 py-3 rounded-lg font-semibold">
+                    <i class="fas fa-plus mr-2"></i>
+                    إضافة طالب جديد
+                </button>
+            </div>
+            
+            <!-- Students Table -->
+            <div class="card p-6">
+                <div class="overflow-x-auto">
+                    <table class="w-full table-auto">
+                        <thead>
+                            <tr class="border-b border-gray-200">
+                                <th class="text-right py-3 px-4 font-semibold text-gray-700">كود الطالب</th>
+                                <th class="text-right py-3 px-4 font-semibold text-gray-700">الاسم</th>
+                                <th class="text-right py-3 px-4 font-semibold text-gray-700">التخصص</th>
+                                <th class="text-right py-3 px-4 font-semibold text-gray-700">السنة الدراسية</th>
+                                <th class="text-right py-3 px-4 font-semibold text-gray-700">تاريخ التسجيل</th>
+                                <th class="text-center py-3 px-4 font-semibold text-gray-700">الإجراءات</th>
+                            </tr>
+                        </thead>
+                        <tbody id="studentsTableBody">
+                            <!-- Students will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results Section -->
+        <section id="results" class="section hidden">
+            <div class="flex justify-between items-center mb-6">
+                <div>
+                    <h1 class="text-3xl font-bold text-gray-800 mb-2">إدارة النتائج</h1>
+                    <p class="text-gray-600">إضافة وإدارة نتائج الطلاب</p>
+                </div>
+                <button id="addResultBtn" class="btn-primary text-white px-6 py-3 rounded-lg font-semibold">
+                    <i class="fas fa-plus mr-2"></i>
+                    إضافة نتيجة جديدة
+                </button>
+            </div>
+            
+            <!-- Results Table -->
+            <div class="card p-6">
+                <div class="overflow-x-auto">
+                    <table class="w-full table-auto">
+                        <thead>
+                            <tr class="border-b border-gray-200">
+                                <th class="text-right py-3 px-4 font-semibold text-gray-700">كود الطالب</th>
+                                <th class="text-right py-3 px-4 font-semibold text-gray-700">اسم الطالب</th>
+                                <th class="text-right py-3 px-4 font-semibold text-gray-700">التخصص</th>
+                                <th class="text-right py-3 px-4 font-semibold text-gray-700">السنة</th>
+                                <th class="text-right py-3 px-4 font-semibold text-gray-700">المعدل</th>
+                                <th class="text-center py-3 px-4 font-semibold text-gray-700">الإجراءات</th>
+                            </tr>
+                        </thead>
+                        <tbody id="resultsTableBody">
+                            <!-- Results will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Notifications Section -->
+        <section id="notifications" class="section hidden">
+            <div class="flex justify-between items-center mb-6">
+                <div>
+                    <h1 class="text-3xl font-bold text-gray-800 mb-2">إدارة الإشعارات</h1>
+                    <p class="text-gray-600">إرسال وإدارة الإشعارات للطلاب</p>
+                </div>
+                <button id="sendNotificationBtn" class="btn-primary text-white px-6 py-3 rounded-lg font-semibold">
+                    <i class="fas fa-bell mr-2"></i>
+                    إرسال إشعار جديد
+                </button>
+            </div>
+            
+            <!-- Notifications List -->
+            <div class="card p-6">
+                <div id="notificationsList" class="space-y-4">
+                    <!-- Notifications will be loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Settings Section -->
+        <section id="settings" class="section hidden">
+            <div class="mb-6">
+                <h1 class="text-3xl font-bold text-gray-800 mb-2">الإعدادات</h1>
+                <p class="text-gray-600">إعدادات النظام والتطبيق</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div class="card p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">إعدادات الموقع</h3>
+                    <form id="siteSettingsForm" class="space-y-4">
+                        <div>
+                            <label class="block text-gray-700 font-semibold mb-2">اسم الموقع</label>
+                            <input type="text" class="w-full px-4 py-3 rounded-lg border-2 focus:border-blue-500 focus:outline-none" value="المعهد المصري لأكاديمية الإسكندرية">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 font-semibold mb-2">وصف الموقع</label>
+                            <textarea class="w-full px-4 py-3 rounded-lg border-2 focus:border-blue-500 focus:outline-none" rows="3">أفضل معهد تعليم عالي في مصر</textarea>
+                        </div>
+                        <button type="submit" class="btn-primary text-white px-6 py-3 rounded-lg font-semibold">
+                            حفظ التغييرات
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="card p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">إعدادات الإشعارات</h3>
+                    <form id="notificationSettingsForm" class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <label class="text-gray-700 font-semibold">تفعيل الإشعارات</label>
+                            <input type="checkbox" class="toggle" checked>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <label class="text-gray-700 font-semibold">إشعارات البريد الإلكتروني</label>
+                            <input type="checkbox" class="toggle" checked>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <label class="text-gray-700 font-semibold">الإشعارات الفورية</label>
+                            <input type="checkbox" class="toggle" checked>
+                        </div>
+                        <button type="submit" class="btn-primary text-white px-6 py-3 rounded-lg font-semibold">
+                            حفظ الإعدادات
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- JavaScript Files -->
+    <script src="js/firebase-config.js"></script>
+    <script src="js/content-manager.js"></script>
+    <script src="js/auth-system.js"></script>
+    <script src="js/admin-panel.js"></script>
+</body>
+</html>
