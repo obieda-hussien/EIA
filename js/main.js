@@ -4,6 +4,95 @@
  */
 
 /**
+ * Main EIA class for handling form interactions and page functionality
+ */
+class EIAMain {
+    constructor() {
+        this.init();
+    }
+
+    init() {
+        this.initFormHandlers();
+        this.initScrollHandler();
+    }
+
+    initFormHandlers() {
+        // Find all forms and bind submit handlers
+        const forms = document.querySelectorAll('form');
+        forms.forEach(form => {
+            if (form.addEventListener) {
+                form.addEventListener('submit', this.handleFormSubmit.bind(this));
+            }
+        });
+
+        // Initialize contact form if exists
+        const contactForm = document.getElementById('contact-form');
+        if (contactForm && contactForm.addEventListener) {
+            contactForm.addEventListener('submit', this.handleContactSubmit.bind(this));
+        }
+
+        // Initialize other interactive elements
+        this.initializeInteractiveElements();
+    }
+
+    handleFormSubmit(event) {
+        // Basic form submit handler
+        console.log('Form submitted:', event.target);
+    }
+
+    handleContactSubmit(event) {
+        event.preventDefault();
+        // Handle contact form submission
+        console.log('Contact form submitted');
+    }
+
+    initializeInteractiveElements() {
+        // Initialize any interactive elements that need binding
+        const buttons = document.querySelectorAll('button[data-action]');
+        buttons.forEach(button => {
+            if (button.addEventListener) {
+                button.addEventListener('click', this.handleButtonClick.bind(this));
+            }
+        });
+    }
+
+    handleButtonClick(event) {
+        const action = event.target.getAttribute('data-action');
+        console.log('Button clicked with action:', action);
+    }
+
+    initScrollHandler() {
+        if (window.addEventListener) {
+            window.addEventListener('scroll', this.handleScroll.bind(this));
+        }
+    }
+
+    handleScroll() {
+        // Update progress bar based on scroll position
+        this.updateProgressBar();
+    }
+
+    updateProgressBar() {
+        // Calculate scroll progress
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+
+        // Update progress bar if it exists
+        const progressBar = document.getElementById('progress-bar');
+        if (progressBar) {
+            progressBar.style.width = scrolled + '%';
+        }
+
+        // Alternative: update any element with class 'scroll-progress'
+        const progressElements = document.querySelectorAll('.scroll-progress');
+        progressElements.forEach(element => {
+            element.style.width = scrolled + '%';
+        });
+    }
+}
+
+/**
  * Enhanced section navigation with map refresh
  * @param {string} sectionId - Target section ID
  */
@@ -488,3 +577,11 @@ function setupEnhancedButtonHandlers() {
  * Setup enhanced button handlers after a delay to ensure DOM is fully ready
  */
 setTimeout(setupEnhancedButtonHandlers, 1000);
+
+/**
+ * Initialize EIAMain when DOM is ready
+ */
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize the main EIA application
+    new EIAMain();
+});
