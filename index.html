@@ -51,6 +51,72 @@
     <meta name="msapplication-TileColor" content="#1e40af">
     <meta name="msapplication-config" content="/browserconfig.xml">
     
+    <!-- Enhanced SEO Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="format-detection" content="telephone=yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="المعهد المصري">
+    <meta name="generator" content="EIA Website 2024">
+    <meta name="subject" content="التعليم العالي والتدريب المهني">
+    <meta name="copyright" content="المعهد المصري لأكاديمية الإسكندرية 2024">
+    <meta name="abstract" content="معهد تعليمي متخصص في إدارة الأعمال والمحاسبة ونظم المعلومات">
+    <meta name="topic" content="التعليم العالي">
+    <meta name="summary" content="أفضل معهد تعليم عالي في الإسكندرية مع 28 سنة خبرة">
+    <meta name="classification" content="Education">
+    <meta name="designer" content="EIA Development Team">
+    <meta name="reply-to" content="info@egyptian-institute-alexandria.edu.eg">
+    <meta name="owner" content="المعهد المصري لأكاديمية الإسكندرية">
+    <meta name="url" content="https://egyptian-institute-alexandria.edu.eg">
+    <meta name="identifier-URL" content="https://egyptian-institute-alexandria.edu.eg">
+    <meta name="directory" content="submission">
+    <meta name="category" content="Education, Business, Accounting, Information Systems">
+    <meta name="coverage" content="Egypt, Alexandria">
+    <meta name="distribution" content="Global">
+    <meta name="rating" content="General">
+    <meta name="revisit-after" content="3 days">
+    <meta name="subtitle" content="تعليم عالي معتمد في الإسكندرية">
+    <meta name="target" content="Students, Business Professionals, Career Seekers">
+    <meta name="audience" content="Students, Professionals, Parents">
+    <meta name="pagename" content="المعهد المصري - الصفحة الرئيسية">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="og:email" content="info@egyptian-institute-alexandria.edu.eg">
+    <meta name="og:phone_number" content="+2033236661">
+    <meta name="og:fax_number" content="+2033236662">
+    <meta name="og:latitude" content="31.2001">
+    <meta name="og:longitude" content="29.9187">
+    <meta name="og:street-address" content="3 شارع الملك">
+    <meta name="og:locality" content="الإسكندرية">
+    <meta name="og:region" content="الإسكندرية">
+    <meta name="og:postal-code" content="21500">
+    <meta name="og:country-name" content="Egypt">
+    
+    <!-- Business Schema -->
+    <meta property="business:contact_data:street_address" content="3 شارع الملك، أمام محطة قطار المنتزة">
+    <meta property="business:contact_data:locality" content="الإسكندرية">
+    <meta property="business:contact_data:region" content="الإسكندرية">
+    <meta property="business:contact_data:postal_code" content="21500">
+    <meta property="business:contact_data:country_name" content="Egypt">
+    <meta property="business:contact_data:email" content="info@egyptian-institute-alexandria.edu.eg">
+    <meta property="business:contact_data:phone_number" content="+2033236661">
+    <meta property="business:contact_data:website" content="https://egyptian-institute-alexandria.edu.eg">
+    
+    <!-- Article Schema for News -->
+    <meta property="article:publisher" content="المعهد المصري لأكاديمية الإسكندرية">
+    <meta property="article:section" content="التعليم">
+    <meta property="article:tag" content="تعليم عالي, إدارة أعمال, محاسبة, نظم معلومات">
+    
+    <!-- App Links -->
+    <meta property="al:web:url" content="https://egyptian-institute-alexandria.edu.eg">
+    
+    <!-- Performance Hints -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&family=Tajawal:wght@300;400;500;700;800&display=swap" as="style">
+    <link rel="preload" href="css/animations.css" as="style">
+    <link rel="prefetch" href="js/main.js">
+    <link rel="prefetch" href="js/map.js">
+    <link rel="prefetch" href="js/api.js">
+    
     <!-- Canonical URL -->
     <link rel="canonical" href="https://egyptian-institute-alexandria.edu.eg/">
     
@@ -80,6 +146,9 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Custom Enhanced Animations -->
+    <link rel="stylesheet" href="css/animations.css">
     
     <!-- Structured Data - Organization -->
     <script type="application/ld+json">
@@ -715,43 +784,48 @@
     <!-- Home Section -->
     <section id="home" class="section-active">
         <!-- Hero Section -->
-        <div class="hero-gradient text-white py-20">
-            <div class="container mx-auto px-4 text-center">
-                <div class="slide-in">
-                    <h1 class="text-5xl md:text-6xl font-bold mb-6">أهلاً بيك في المعهد المصري!</h1>
-                    <p class="text-xl md:text-2xl mb-8 text-blue-100">مستقبلك يبدأ من هنا.. انضم لأكتر من 4000 طالب وطالبة</p>
-                    <div class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-reverse md:space-x-6">
-                        <button class="btn-primary px-8 py-4 rounded-full text-white font-bold text-lg hover:scale-105 transform transition" onclick="showSection('departments')">
+        <div class="hero-gradient text-white py-20 relative overflow-hidden">
+            <div class="container mx-auto px-4 text-center relative z-10">
+                <div class="slide-in animate-on-scroll">
+                    <h1 class="text-5xl md:text-6xl font-bold mb-6 typewriter gradient-text neon-glow" data-text="أهلاً بيك في المعهد المصري!">أهلاً بيك في المعهد المصري!</h1>
+                    <p class="text-xl md:text-2xl mb-8 text-blue-100 animate-on-scroll">مستقبلك يبدأ من هنا.. انضم لأكتر من 4000 طالب وطالبة</p>
+                    <div class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-reverse md:space-x-6 animate-on-scroll">
+                        <button class="btn-primary magnetic pulse-blue px-8 py-4 rounded-full text-white font-bold text-lg hover:scale-105 transform transition" onclick="showSection('departments')">
                             <i class="fas fa-rocket mr-2"></i>
                             اختار تخصصك دلوقتي
                         </button>
-                        <button class="bg-transparent border-2 border-white px-8 py-4 rounded-full text-white font-bold text-lg hover:bg-white hover:text-blue-800 transition" onclick="showSection('about')">
+                        <button class="bg-transparent border-2 border-white px-8 py-4 rounded-full text-white font-bold text-lg hover:bg-white hover:text-blue-800 transition hover-glow magnetic" onclick="showSection('about')">
                             <i class="fas fa-play mr-2"></i>
                             اعرف عننا أكتر
                         </button>
                     </div>
                 </div>
             </div>
+            <!-- Floating geometric shapes -->
+            <div class="absolute top-10 left-10 w-20 h-20 bg-white bg-opacity-10 rounded-full floating-3d"></div>
+            <div class="absolute top-32 right-20 w-16 h-16 bg-white bg-opacity-10 rounded-lg floating-animation" style="animation-delay: 1s;"></div>
+            <div class="absolute bottom-20 left-32 w-12 h-12 bg-white bg-opacity-10 rounded-full floating-3d" style="animation-delay: 2s;"></div>
+            <div class="absolute bottom-10 right-10 w-24 h-24 bg-white bg-opacity-10 rounded-lg floating-animation" style="animation-delay: 0.5s;"></div>
         </div>
 
         <!-- Quick Stats -->
         <div class="bg-white py-16">
             <div class="container mx-auto px-4">
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                    <div class="card-hover">
-                        <div class="stats-counter">4000+</div>
+                    <div class="card-hover animate-on-scroll hover-lift">
+                        <div class="stats-counter pulse-blue">4000+</div>
                         <p class="text-gray-600 font-semibold">طالب وطالبة</p>
                     </div>
-                    <div class="card-hover">
-                        <div class="stats-counter">28+</div>
+                    <div class="card-hover animate-on-scroll hover-lift" style="animation-delay: 0.1s;">
+                        <div class="stats-counter pulse-pink">28+</div>
                         <p class="text-gray-600 font-semibold">سنة خبرة</p>
                     </div>
-                    <div class="card-hover">
-                        <div class="stats-counter">3</div>
+                    <div class="card-hover animate-on-scroll hover-lift" style="animation-delay: 0.2s;">
+                        <div class="stats-counter pulse-green">3</div>
                         <p class="text-gray-600 font-semibold">تخصصات مميزة</p>
                     </div>
-                    <div class="card-hover">
-                        <div class="stats-counter">100%</div>
+                    <div class="card-hover animate-on-scroll hover-lift" style="animation-delay: 0.3s;">
+                        <div class="stats-counter pulse-blue">100%</div>
                         <p class="text-gray-600 font-semibold">معادلة مضمونة</p>
                     </div>
                 </div>
@@ -759,110 +833,135 @@
         </div>
 
         <!-- Departments Overview -->
-        <div class="gradient-bg py-20">
-            <div class="container mx-auto px-4">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl font-bold text-white mb-4">اختار التخصص اللي يناسبك</h2>
+        <div class="gradient-bg py-20 relative overflow-hidden">
+            <div class="container mx-auto px-4 relative z-10">
+                <div class="text-center mb-16 animate-on-scroll">
+                    <h2 class="text-4xl font-bold text-white mb-4 glitch-effect" data-text="اختار التخصص اللي يناسبك">اختار التخصص اللي يناسبك</h2>
                     <p class="text-xl text-blue-100">3 تخصصات عصرية هتخليك جاهز لسوق العمل</p>
                 </div>
                 
                 <div class="grid md:grid-cols-3 gap-8">
-                    <div class="department-card p-8 rounded-2xl card-hover text-center">
-                        <div class="w-20 h-20 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full flex items-center justify-center mx-auto mb-6 floating-animation">
+                    <div class="department-card morph-card p-8 rounded-2xl card-hover text-center animate-on-scroll stagger-child hover-glow">
+                        <div class="w-20 h-20 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full flex items-center justify-center mx-auto mb-6 floating-animation pulse-blue">
                             <i class="fas fa-users text-white text-2xl"></i>
                         </div>
-                        <h3 class="text-2xl font-bold text-blue-800 mb-4">إدارة الأعمال</h3>
+                        <h3 class="text-2xl font-bold text-blue-800 mb-4 gradient-text">إدارة الأعمال</h3>
                         <p class="text-gray-600 mb-6">هتتعلم إزاي تدير الشركات والمشاريع زي المحترفين. مجال واسع وفرص شغل كتير!</p>
-                        <button class="btn-primary px-6 py-3 rounded-full text-white font-semibold" onclick="showSection('departments')">
+                        <button class="btn-primary magnetic px-6 py-3 rounded-full text-white font-semibold" onclick="showSection('departments')">
                             اعرف أكتر
                         </button>
                     </div>
                     
-                    <div class="department-card p-8 rounded-2xl card-hover text-center">
-                        <div class="w-20 h-20 bg-gradient-to-r from-green-500 to-green-700 rounded-full flex items-center justify-center mx-auto mb-6 floating-animation" style="animation-delay: 0.5s;">
+                    <div class="department-card morph-card p-8 rounded-2xl card-hover text-center animate-on-scroll stagger-child hover-glow" style="animation-delay: 0.1s;">
+                        <div class="w-20 h-20 bg-gradient-to-r from-green-500 to-green-700 rounded-full flex items-center justify-center mx-auto mb-6 floating-animation pulse-green" style="animation-delay: 0.5s;">
                             <i class="fas fa-calculator text-white text-2xl"></i>
                         </div>
-                        <h3 class="text-2xl font-bold text-green-800 mb-4">المحاسبة والمراجعة</h3>
+                        <h3 class="text-2xl font-bold text-green-800 mb-4 gradient-text">المحاسبة والمراجعة</h3>
                         <p class="text-gray-600 mb-6">خليك محاسب محترف واشتغل في أكبر الشركات. تخصص مطلوب في كل مكان!</p>
-                        <button class="bg-gradient-to-r from-green-500 to-green-700 px-6 py-3 rounded-full text-white font-semibold hover:scale-105 transform transition" onclick="showSection('departments')">
+                        <button class="bg-gradient-to-r from-green-500 to-green-700 magnetic px-6 py-3 rounded-full text-white font-semibold hover:scale-105 transform transition" onclick="showSection('departments')">
                             اعرف أكتر
                         </button>
                     </div>
                     
-                    <div class="department-card p-8 rounded-2xl card-hover text-center">
-                        <div class="w-20 h-20 bg-gradient-to-r from-purple-500 to-purple-700 rounded-full flex items-center justify-center mx-auto mb-6 floating-animation" style="animation-delay: 1s;">
+                    <div class="department-card morph-card p-8 rounded-2xl card-hover text-center animate-on-scroll stagger-child hover-glow" style="animation-delay: 0.2s;">
+                        <div class="w-20 h-20 bg-gradient-to-r from-purple-500 to-purple-700 rounded-full flex items-center justify-center mx-auto mb-6 floating-animation pulse-pink" style="animation-delay: 1s;">
                             <i class="fas fa-laptop-code text-white text-2xl"></i>
                         </div>
-                        <h3 class="text-2xl font-bold text-purple-800 mb-4">نظم معلومات الأعمال</h3>
+                        <h3 class="text-2xl font-bold text-purple-800 mb-4 gradient-text">نظم معلومات الأعمال</h3>
                         <p class="text-gray-600 mb-6">اربط بين التكنولوجيا والإدارة. تخصص المستقبل ومجاله واسع جداً!</p>
-                        <button class="bg-gradient-to-r from-purple-500 to-purple-700 px-6 py-3 rounded-full text-white font-semibold hover:scale-105 transform transition" onclick="showSection('departments')">
+                        <button class="bg-gradient-to-r from-purple-500 to-purple-700 magnetic px-6 py-3 rounded-full text-white font-semibold hover:scale-105 transform transition" onclick="showSection('departments')">
                             اعرف أكتر
                         </button>
                     </div>
                 </div>
             </div>
+            <!-- Background decorative elements -->
+            <div class="absolute top-20 left-20 w-32 h-32 bg-white bg-opacity-5 rounded-full floating-3d"></div>
+            <div class="absolute bottom-20 right-20 w-24 h-24 bg-white bg-opacity-5 rounded-lg floating-animation" style="animation-delay: 1.5s;"></div>
         </div>
 
         <!-- Latest News -->
-        <div class="bg-gray-50 py-20">
+        <div class="bg-gray-50 py-20 relative">
             <div class="container mx-auto px-4">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl font-bold text-gray-800 mb-4">آخر الأخبار والفعاليات</h2>
+                <div class="text-center mb-16 animate-on-scroll">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-4 gradient-text">آخر الأخبار والفعاليات</h2>
                     <p class="text-xl text-gray-600">خليك متابع كل جديد في المعهد</p>
                 </div>
                 
                 <div class="grid md:grid-cols-3 gap-8">
-                    <div class="news-card p-6">
-                        <div class="w-full h-48 bg-gradient-to-r from-blue-400 to-blue-600 rounded-lg mb-6 flex items-center justify-center">
-                            <i class="fas fa-graduation-cap text-white text-4xl"></i>
+                    <div class="news-card morph-card p-6 animate-on-scroll stagger-child hover-glow">
+                        <div class="w-full h-48 bg-gradient-to-r from-blue-400 to-blue-600 rounded-lg mb-6 flex items-center justify-center floating-animation">
+                            <i class="fas fa-graduation-cap text-white text-4xl pulse-blue"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-gray-800 mb-3">حفل تخرج الدفعة الجديدة 2024</h3>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3 gradient-text">حفل تخرج الدفعة الجديدة 2024</h3>
                         <p class="text-gray-600 mb-4">مبروك لكل الخريجين الجدد! احتفلنا مع أكتر من 500 خريج وخريجة...</p>
-                        <div class="flex items-center text-blue-600">
+                        <div class="flex items-center text-blue-600 mb-4">
                             <i class="fas fa-calendar-alt mr-2"></i>
                             <span class="text-sm">15 يونيو 2024</span>
                         </div>
+                        <button onclick="openArticleModal('graduation-celebration')" class="btn-primary magnetic w-full py-2 rounded-lg text-sm">
+                            اقرأ المزيد
+                        </button>
                     </div>
                     
-                    <div class="news-card p-6">
-                        <div class="w-full h-48 bg-gradient-to-r from-green-400 to-green-600 rounded-lg mb-6 flex items-center justify-center">
-                            <i class="fas fa-lightbulb text-white text-4xl"></i>
+                    <div class="news-card morph-card p-6 animate-on-scroll stagger-child hover-glow" style="animation-delay: 0.1s;">
+                        <div class="w-full h-48 bg-gradient-to-r from-green-400 to-green-600 rounded-lg mb-6 flex items-center justify-center floating-animation" style="animation-delay: 0.5s;">
+                            <i class="fas fa-lightbulb text-white text-4xl pulse-green"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-gray-800 mb-3">ورشة عمل في ريادة الأعمال</h3>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3 gradient-text">ورشة عمل في ريادة الأعمال</h3>
                         <p class="text-gray-600 mb-4">ورشة مجانية لكل الطلاب عن إزاي تبدأ مشروعك الخاص...</p>
-                        <div class="flex items-center text-green-600">
+                        <div class="flex items-center text-green-600 mb-4">
                             <i class="fas fa-calendar-alt mr-2"></i>
                             <span class="text-sm">20 يوليو 2024</span>
                         </div>
+                        <button onclick="showSection('entrepreneurship-workshop')" class="bg-green-500 hover:bg-green-600 magnetic w-full py-2 rounded-lg text-sm text-white transition">
+                            تفاصيل الورشة
+                        </button>
                     </div>
                     
-                    <div class="news-card p-6">
-                        <div class="w-full h-48 bg-gradient-to-r from-purple-400 to-purple-600 rounded-lg mb-6 flex items-center justify-center">
-                            <i class="fas fa-trophy text-white text-4xl"></i>
+                    <div class="news-card morph-card p-6 animate-on-scroll stagger-child hover-glow" style="animation-delay: 0.2s;">
+                        <div class="w-full h-48 bg-gradient-to-r from-purple-400 to-purple-600 rounded-lg mb-6 flex items-center justify-center floating-animation" style="animation-delay: 1s;">
+                            <i class="fas fa-trophy text-white text-4xl pulse-pink"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-gray-800 mb-3">فوز المعهد بجائزة التميز</h3>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3 gradient-text">فوز المعهد بجائزة التميز</h3>
                         <p class="text-gray-600 mb-4">حصل المعهد على جائزة أفضل معهد تعليمي في الإسكندرية...</p>
-                        <div class="flex items-center text-purple-600">
+                        <div class="flex items-center text-purple-600 mb-4">
                             <i class="fas fa-calendar-alt mr-2"></i>
                             <span class="text-sm">10 يوليو 2024</span>
                         </div>
+                        <button onclick="openArticleModal('excellence-award')" class="bg-purple-500 hover:bg-purple-600 magnetic w-full py-2 rounded-lg text-sm text-white transition">
+                            اقرأ المزيد
+                        </button>
                     </div>
                 </div>
+                
+                <!-- More News Button -->
+                <div class="text-center mt-12 animate-on-scroll">
+                    <button onclick="showSection('news')" class="btn-primary magnetic hover-glow px-8 py-4 rounded-full">
+                        <i class="fas fa-newspaper mr-2"></i>
+                        شاهد كل الأخبار
+                    </button>
+                </div>
             </div>
+            
+            <!-- Background decorative elements -->
+            <div class="absolute top-10 right-10 w-20 h-20 bg-blue-100 rounded-full floating-3d opacity-50"></div>
+            <div class="absolute bottom-10 left-10 w-16 h-16 bg-green-100 rounded-lg floating-animation opacity-50" style="animation-delay: 2s;"></div>
         </div>
 
-        <!-- Contact Info -->
+        <!-- Contact Info with Interactive Map -->
         <div class="bg-white py-16">
             <div class="container mx-auto px-4">
-                <div class="text-center mb-12">
-                    <h2 class="text-3xl font-bold text-gray-800 mb-4">تعال زورنا في المعهد!</h2>
+                <div class="text-center mb-12 animate-on-scroll">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4 gradient-text glitch-effect" data-text="تعال زورنا في المعهد!">تعال زورنا في المعهد!</h2>
+                    <p class="text-gray-600">موقع متميز وسهل الوصول بكل المواصلات</p>
                 </div>
                 
                 <div class="grid md:grid-cols-2 gap-12 items-center">
-                    <div>
+                    <div class="animate-on-scroll">
                         <div class="space-y-6">
-                            <div class="flex items-center space-x-reverse space-x-4">
-                                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                            <div class="flex items-center space-x-reverse space-x-4 hover-lift morph-card p-4 rounded-lg">
+                                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center pulse-blue">
                                     <i class="fas fa-map-marker-alt text-blue-600"></i>
                                 </div>
                                 <div>
@@ -871,8 +970,8 @@
                                 </div>
                             </div>
                             
-                            <div class="flex items-center space-x-reverse space-x-4">
-                                <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                            <div class="flex items-center space-x-reverse space-x-4 hover-lift morph-card p-4 rounded-lg">
+                                <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center pulse-green">
                                     <i class="fas fa-clock text-green-600"></i>
                                 </div>
                                 <div>
@@ -881,24 +980,78 @@
                                 </div>
                             </div>
                             
-                            <div class="flex items-center space-x-reverse space-x-4">
-                                <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
+                            <div class="flex items-center space-x-reverse space-x-4 hover-lift morph-card p-4 rounded-lg">
+                                <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center pulse-pink">
                                     <i class="fas fa-phone text-purple-600"></i>
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-gray-800">التليفون</h4>
-                                    <p class="text-gray-600">اتصل بنا دلوقتي للاستفسار</p>
+                                    <p class="text-gray-600">16000 (مجاني) - 033236661</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center space-x-reverse space-x-4 hover-lift morph-card p-4 rounded-lg">
+                                <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center pulse-blue">
+                                    <i class="fas fa-bus text-orange-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800">المواصلات</h4>
+                                    <p class="text-gray-600">أتوبيس 445, 750 - ميكروباص المنتزة</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="map-container h-64 bg-gradient-to-r from-blue-100 to-blue-200 flex items-center justify-center">
-                        <div class="text-center">
-                            <i class="fas fa-map text-blue-600 text-4xl mb-4"></i>
-                            <p class="text-blue-800 font-semibold">خريطة موقع المعهد</p>
-                            <p class="text-blue-600 text-sm">سهل الوصول بالمواصلات</p>
+                    <!-- Interactive Map Container -->
+                    <div class="animate-on-scroll" style="animation-delay: 0.2s;">
+                        <div id="interactive-map" class="map-container h-96 bg-gradient-to-r from-blue-100 to-blue-200 flex items-center justify-center rounded-2xl shadow-lg hover-glow">
+                            <div class="text-center">
+                                <div class="loading-spinner mx-auto mb-4"></div>
+                                <p class="text-blue-800 font-semibold">جاري تحميل الخريطة التفاعلية...</p>
+                                <p class="text-blue-600 text-sm">خريطة تفاعلية بدون API</p>
+                            </div>
                         </div>
+                        
+                        <!-- Map Legend -->
+                        <div class="mt-4 p-4 bg-gray-50 rounded-lg">
+                            <h5 class="font-bold text-gray-800 mb-2">أماكن مهمة حول المعهد:</h5>
+                            <div class="grid grid-cols-2 gap-2 text-sm">
+                                <div class="flex items-center">
+                                    <div class="w-3 h-3 bg-red-500 rounded-full ml-2"></div>
+                                    <span>المعهد المصري</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="w-3 h-3 bg-blue-500 rounded-full ml-2"></div>
+                                    <span>محطة القطار</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="w-3 h-3 bg-purple-500 rounded-full ml-2"></div>
+                                    <span>مول سان ستيفانو</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="w-3 h-3 bg-green-500 rounded-full ml-2"></div>
+                                    <span>حديقة المنتزة</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quick Actions -->
+                <div class="mt-12 text-center animate-on-scroll">
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <a href="https://maps.google.com/maps?q=31.2001,29.9187" target="_blank" class="btn-primary magnetic hover-glow px-6 py-3 rounded-full">
+                            <i class="fas fa-directions mr-2"></i>
+                            اتجاهات Google Maps
+                        </a>
+                        <a href="tel:+2033236661" class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full font-semibold transition magnetic hover-glow">
+                            <i class="fas fa-phone mr-2"></i>
+                            اتصل بنا
+                        </a>
+                        <button onclick="showSection('contact')" class="bg-purple-500 hover:bg-purple-600 text-white px-6 py-3 rounded-full font-semibold transition magnetic hover-glow">
+                            <i class="fas fa-envelope mr-2"></i>
+                            راسلنا
+                        </button>
                     </div>
                 </div>
             </div>
@@ -1876,49 +2029,42 @@
 
     <!-- Contact Section -->
     <section id="contact" class="section-hidden">
-        <div class="hero-gradient text-white py-20">
-            <div class="container mx-auto px-4 text-center">
-                <h1 class="text-5xl font-bold mb-6">تواصل معانا</h1>
-                <p class="text-xl text-blue-100">احنا هنا عشان نساعدك في أي وقت</p>
+        <div class="hero-gradient text-white py-20 relative overflow-hidden">
+            <div class="container mx-auto px-4 text-center relative z-10">
+                <h1 class="text-5xl font-bold mb-6 gradient-text neon-glow glitch-effect" data-text="تواصل معانا">تواصل معانا</h1>
+                <p class="text-xl text-blue-100 animate-on-scroll">احنا هنا عشان نساعدك في أي وقت</p>
             </div>
+            <!-- Floating elements -->
+            <div class="absolute top-20 left-20 w-16 h-16 bg-white bg-opacity-10 rounded-full floating-3d"></div>
+            <div class="absolute bottom-20 right-20 w-20 h-20 bg-white bg-opacity-10 rounded-lg floating-animation"></div>
         </div>
         
         <div class="bg-gray-50 py-20">
             <div class="container mx-auto px-4">
                 <div class="grid md:grid-cols-2 gap-12">
                     <!-- Contact Form -->
-                    <div class="bg-white p-8 rounded-2xl shadow-lg">
-                        <h2 class="text-3xl font-bold text-gray-800 mb-6">ابعتلنا رسالة</h2>
+                    <div class="bg-white p-8 rounded-2xl shadow-lg animate-on-scroll hover-glow">
+                        <h2 class="text-3xl font-bold text-gray-800 mb-6 gradient-text">ابعتلنا رسالة</h2>
                         
-                        <form class="contact-form space-y-6">
+                        <form class="contact-form space-y-6 animate-on-scroll">
                             <div class="grid md:grid-cols-2 gap-4">
-                                <div>
-                                    <label class="block text-gray-700 font-semibold mb-2">الاسم *</label>
-                                    <input type="text" 
-                                           class="w-full px-4 py-3 rounded-lg" 
-                                           placeholder="اكتب اسمك الكريم"
-                                           required>
+                                <div class="modern-input">
+                                    <input type="text" name="name" placeholder=" " required>
+                                    <label>الاسم الكامل *</label>
                                 </div>
-                                <div>
-                                    <label class="block text-gray-700 font-semibold mb-2">رقم التليفون *</label>
-                                    <input type="tel" 
-                                           class="w-full px-4 py-3 rounded-lg" 
-                                           placeholder="01xxxxxxxxx"
-                                           required>
+                                <div class="modern-input">
+                                    <input type="tel" name="phone" placeholder=" " required>
+                                    <label>رقم التليفون *</label>
                                 </div>
                             </div>
                             
-                            <div>
-                                <label class="block text-gray-700 font-semibold mb-2">البريد الإلكتروني *</label>
-                                <input type="email" 
-                                       class="w-full px-4 py-3 rounded-lg" 
-                                       placeholder="example@email.com"
-                                       required>
+                            <div class="modern-input">
+                                <input type="email" name="email" placeholder=" " required>
+                                <label>البريد الإلكتروني *</label>
                             </div>
                             
-                            <div>
-                                <label class="block text-gray-700 font-semibold mb-2">الموضوع *</label>
-                                <select class="w-full px-4 py-3 rounded-lg border-2" required>
+                            <div class="modern-input">
+                                <select name="subject" required>
                                     <option value="">اختر الموضوع</option>
                                     <option value="admission">استفسار عن القبول</option>
                                     <option value="fees">استفسار عن المصروفات</option>
@@ -1926,17 +2072,15 @@
                                     <option value="results">استفسار عن النتائج</option>
                                     <option value="other">أخرى</option>
                                 </select>
+                                <label>الموضوع *</label>
                             </div>
                             
-                            <div>
-                                <label class="block text-gray-700 font-semibold mb-2">الرسالة *</label>
-                                <textarea class="w-full px-4 py-3 rounded-lg h-32 resize-none" 
-                                          placeholder="اكتب رسالتك هنا..."
-                                          required></textarea>
+                            <div class="modern-input">
+                                <textarea name="message" rows="5" placeholder=" " required></textarea>
+                                <label>الرسالة *</label>
                             </div>
                             
-                            <button type="submit" 
-                                    class="w-full btn-primary py-4 rounded-lg text-white font-bold text-lg hover:scale-105 transform transition">
+                            <button type="submit" class="w-full btn-primary magnetic hover-glow py-4 rounded-lg text-white font-bold text-lg">
                                 <i class="fas fa-paper-plane mr-2"></i>
                                 ارسال الرسالة
                             </button>
@@ -1944,13 +2088,13 @@
                     </div>
                     
                     <!-- Contact Info -->
-                    <div>
-                        <div class="bg-white p-8 rounded-2xl shadow-lg mb-8">
-                            <h2 class="text-3xl font-bold text-gray-800 mb-6">معلومات التواصل</h2>
+                    <div class="animate-on-scroll" style="animation-delay: 0.2s;">
+                        <div class="bg-white p-8 rounded-2xl shadow-lg mb-8 hover-glow">
+                            <h2 class="text-3xl font-bold text-gray-800 mb-6 gradient-text">معلومات التواصل</h2>
                             
                             <div class="space-y-6">
-                                <div class="flex items-start space-x-reverse space-x-4">
-                                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <div class="flex items-start space-x-reverse space-x-4 hover-lift p-4 rounded-lg transition">
+                                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 pulse-blue">
                                         <i class="fas fa-map-marker-alt text-blue-600"></i>
                                     </div>
                                     <div>
@@ -1960,8 +2104,8 @@
                                     </div>
                                 </div>
                                 
-                                <div class="flex items-start space-x-reverse space-x-4">
-                                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <div class="flex items-start space-x-reverse space-x-4 hover-lift p-4 rounded-lg transition">
+                                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 pulse-green">
                                         <i class="fas fa-clock text-green-600"></i>
                                     </div>
                                     <div>
@@ -1971,15 +2115,15 @@
                                     </div>
                                 </div>
                                 
-                                <div class="flex items-start space-x-reverse space-x-4">
-                                    <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <div class="flex items-start space-x-reverse space-x-4 hover-lift p-4 rounded-lg transition">
+                                    <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0 pulse-pink">
                                         <i class="fas fa-phone text-purple-600"></i>
                                     </div>
                                     <div>
                                         <h4 class="font-bold text-gray-800 mb-1">أرقام التليفونات</h4>
                                         <p class="text-gray-600">الخط الساخن: 16000 (مجاني)</p>
-                                        <p class="text-gray-600">المعهد: 03-XXXXXXX</p>
-                                        <p class="text-gray-600">شؤون الطلاب: 03-XXXXXXX</p>
+                                        <p class="text-gray-600">المعهد: 033236661</p>
+                                        <p class="text-gray-600">شؤون الطلاب: 033236662</p>
                                     </div>
                                 </div>
                                 
@@ -3537,7 +3681,8 @@
         initializeHashNavigation();
     </script>
     
-    <!-- API and Main JavaScript Files -->
+    <!-- Enhanced JavaScript Files -->
+    <script src="js/map.js"></script>
     <script src="js/api.js"></script>
     <script src="js/main.js"></script>
 </body>
