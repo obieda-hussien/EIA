@@ -154,8 +154,38 @@ class AuthSystem {
             };
 
         } catch (error) {
-            console.error('Admin login error:', error);
-            throw error;
+            // Handle Firebase authentication errors more gracefully
+            let errorMessage = 'حدث خطأ في تسجيل الدخول';
+            
+            if (error.code) {
+                switch (error.code) {
+                    case 'auth/invalid-login-credentials':
+                    case 'auth/wrong-password':
+                    case 'auth/user-not-found':
+                        errorMessage = 'البريد الإلكتروني أو كلمة المرور غير صحيحة';
+                        break;
+                    case 'auth/invalid-email':
+                        errorMessage = 'البريد الإلكتروني غير صحيح';
+                        break;
+                    case 'auth/user-disabled':
+                        errorMessage = 'هذا الحساب معطل';
+                        break;
+                    case 'auth/too-many-requests':
+                        errorMessage = 'تم تجاوز عدد المحاولات المسموح. حاول مرة أخرى لاحقاً';
+                        break;
+                    default:
+                        errorMessage = error.message || 'حدث خطأ في تسجيل الدخول';
+                }
+            } else if (error.message) {
+                errorMessage = error.message;
+            }
+            
+            // Create a user-friendly error object
+            const friendlyError = new Error(errorMessage);
+            friendlyError.code = error.code || 'unknown';
+            friendlyError.originalError = error;
+            
+            throw friendlyError;
         }
     }
 

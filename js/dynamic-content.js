@@ -534,7 +534,8 @@ async function openEventRegistration(eventId) {
     try {
         const event = await window.ContentManager.getEvent(eventId);
         if (!event) {
-            console.error('Event not found');
+            // Use alert instead of console.error to avoid logging system conflicts
+            alert('عذراً، الفعالية غير موجودة أو غير متاحة حالياً');
             return;
         }
 
@@ -599,8 +600,14 @@ async function openEventRegistration(eventId) {
                     closeEventRegistrationModal();
                     
                 } catch (error) {
-                    console.error('Registration error:', error);
-                    alert('حدث خطأ في التسجيل. برجاء المحاولة مرة أخرى.');
+                    // Handle registration errors more gracefully
+                    let errorMessage = 'حدث خطأ في التسجيل. برجاء المحاولة مرة أخرى.';
+                    if (error.message.includes('Event is full')) {
+                        errorMessage = 'عذراً، الفعالية مكتملة العدد';
+                    } else if (error.message.includes('Event not found')) {
+                        errorMessage = 'عذراً، الفعالية غير موجودة';
+                    }
+                    alert(errorMessage);
                 } finally {
                     submitBtn.innerHTML = originalText;
                     submitBtn.disabled = false;
@@ -612,8 +619,12 @@ async function openEventRegistration(eventId) {
         }
 
     } catch (error) {
-        console.error('Error opening event registration:', error);
-        alert('حدث خطأ في تحميل بيانات الفعالية');
+        // Handle event loading errors more gracefully
+        let errorMessage = 'حدث خطأ في تحميل بيانات الفعالية';
+        if (error.message && error.message.includes('not found')) {
+            errorMessage = 'عذراً، الفعالية غير موجودة أو غير متاحة حالياً';
+        }
+        alert(errorMessage);
     }
 }
 
