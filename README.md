@@ -7,7 +7,12 @@
 ![عدد الطلاب](https://img.shields.io/badge/عدد_الطلاب-4000+-red?style=for-the-badge)
 ![الخريجين](https://img.shields.io/badge/إجمالي_الخريجين-15000+-orange?style=for-the-badge)
 
+[![GitHub Pages](https://img.shields.io/badge/GitHub_Pages-النشر_الآلي-success?style=for-the-badge&logo=github)](https://obieda-hussien.github.io/EIA/)
+[![Deployment Status](https://img.shields.io/github/deployments/obieda-hussien/EIA/github-pages?style=for-the-badge&label=حالة_النشر)](https://github.com/obieda-hussien/EIA/deployments)
+
 **تعليم عالي معتمد • مستقبل مضمون • تخصصات عصرية**
+
+🌐 **[زيارة الموقع المباشر](https://obieda-hussien.github.io/EIA/)** 🌐
 
 </div>
 
