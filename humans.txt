@@ -1,27 +1,27 @@
-# المعهد المصري لأكاديمية الإسكندرية للإدارة والمحاسبة
-# Egyptian Institute for Alexandria Academy of Management and Accounting
+# [اسم المؤسسة التعليمية]
+# [Institution Name in English]
 
 /* TEAM */
     Website Developer: Advanced AI Development Team
-    Contact: info [at] egyptian-institute-alexandria.edu.eg
-    Twitter: @EgyptianInstitute
-    From: Alexandria, Egypt
+    Contact: info [at] [domain].edu.[country]
+    Twitter: @[InstitutionHandle]
+    From: [المدينة], [الدولة]
 
-    Academic Director: Dr. Ahmed Mohamed
-    Contact: academic [at] egyptian-institute-alexandria.edu.eg
-    From: Alexandria, Egypt
+    Academic Director: [اسم المدير الأكاديمي]
+    Contact: academic [at] [domain].edu.[country]
+    From: [المدينة], [الدولة]
 
-    IT Manager: Eng. Sarah Hassan
-    Contact: it [at] egyptian-institute-alexandria.edu.eg
-    From: Alexandria, Egypt
+    IT Manager: [اسم مدير تقنية المعلومات]
+    Contact: it [at] [domain].edu.[country]
+    From: [المدينة], [الدولة]
 
-    Student Affairs: Ms. Fatima Al-Zahra
-    Contact: students [at] egyptian-institute-alexandria.edu.eg
-    From: Alexandria, Egypt
+    Student Affairs: [اسم مسؤول شؤون الطلاب]
+    Contact: students [at] [domain].edu.[country]
+    From: [المدينة], [الدولة]
 
 /* THANKS */
-    Students and Faculty of Egyptian Institute
-    Alexandria Academy Community
+    Students and Faculty of [Institution Name]
+    [Academy Name] Community
     All our partners and supporters
     Local businesses and organizations
     Alumni network worldwide
@@ -37,19 +37,19 @@
     Features: Progressive Web App, Responsive Design, Accessibility
 
 /* LOCATION */
-    Address: 3 شارع الملك، أمام محطة قطار المنتزه, Alexandria, Egypt
-    Coordinates: 31.2001, 29.9187
-    Phone: +20-3-3236661
-    Email: info@egyptian-institute-alexandria.edu.eg
-    Website: https://egyptian-institute-alexandria.edu.eg
+    Address: [عنوان المؤسسة الكامل], [المدينة], [الدولة]
+    Coordinates: [خط العرض], [خط الطول]
+    Phone: [رقم الهاتف]
+    Email: info@[domain].edu.[country]
+    Website: https://[domain]
 
 /* ESTABLISHED */
-    Founded: 1996
-    Students: 4000+
-    Experience: 28+ years
-    Specializations: 3 main departments
-    Graduations: 150+ batches
-    Success Rate: 95%+
+    Founded: [سنة التأسيس]
+    Students: [عدد الطلاب]+
+    Experience: [سنوات الخبرة]+ years
+    Specializations: [عدد التخصصات] main departments
+    Graduations: [عدد الدفعات]+ batches
+    Success Rate: [نسبة النجاح]%+
 
 /* MISSION */
     Providing high-quality higher education in management, accounting, and business information systems.
@@ -58,9 +58,9 @@
     إعداد كوادر مهنية مؤهلة لسوق العمل الحديث.
 
 /* VISION */
-    To be the leading educational institution in Alexandria and Egypt for business education.
+    To be the leading educational institution in [المدينة] and [الدولة] for business education.
     Creating tomorrow's business leaders through innovative education and practical training.
-    أن نكون المؤسسة التعليمية الرائدة في الإسكندرية ومصر في مجال التعليم التجاري.
+    أن نكون المؤسسة التعليمية الرائدة في [المدينة] و[الدولة] في مجال التعليم التجاري.
     إعداد قادة الأعمال المستقبليين من خلال التعليم المبتكر والتدريب العملي.
 
 /* FEATURES */

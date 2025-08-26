@@ -1,7 +1,7 @@
 {
-  "name": "egyptian-institute-alexandria",
+  "name": "educational-institution-template",
   "version": "1.0.0",
-  "description": "المعهد المصري لأكاديمية الإسكندرية للإدارة والمحاسبة - الموقع الرسمي",
+  "description": "قالب موقع إلكتروني احترافي للمؤسسات التعليمية - Professional Educational Institution Website Template",
   "main": "index.html",
   "scripts": {
     "build": "./build.sh",
@@ -10,17 +10,22 @@
     "deploy": "npm run build"
   },
   "keywords": [
-    "egyptian-institute",
-    "alexandria",
-    "education",
-    "business-administration",
-    "accounting",
-    "information-systems",
-    "egypt",
+    "educational-template",
+    "website-template",
+    "arabic-template",
+    "rtl-template",
+    "responsive-design",
+    "educational-institution",
+    "university-template",
+    "college-template",
+    "academy-template",
     "arabic",
-    "rtl"
+    "rtl",
+    "tailwindcss",
+    "template",
+    "education"
   ],
-  "author": "المعهد المصري لأكاديمية الإسكندرية",
+  "author": "Template Developer",
   "license": "MIT",
   "devDependencies": {
     "html-minifier-terser": "^7.2.0",
@@ -29,10 +34,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/obieda-hussien/EIA.git"
+    "url": "https://github.com/your-username/your-repo.git"
   },
   "bugs": {
-    "url": "https://github.com/obieda-hussien/EIA/issues"
+    "url": "https://github.com/your-username/your-repo/issues"
   },
-  "homepage": "https://obieda-hussien.github.io/EIA/"
+  "homepage": "https://your-username.github.io/your-repo/"
 }

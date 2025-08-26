@@ -1,15 +1,15 @@
-Contact: mailto:security@egyptian-institute-alexandria.edu.eg
-Contact: tel:+20-3-1234567
+Contact: mailto:security@[domain].edu.[country]
+Contact: tel:[رقم الهاتف]
 Expires: 2025-12-31T23:59:59.000Z
-Encryption: https://egyptian-institute-alexandria.edu.eg/pgp-key.txt
-Acknowledgments: https://egyptian-institute-alexandria.edu.eg/security-acknowledgments
+Encryption: https://[domain]/pgp-key.txt
+Acknowledgments: https://[domain]/security-acknowledgments
 Preferred-Languages: ar, en
-Canonical: https://egyptian-institute-alexandria.edu.eg/.well-known/security.txt
-Policy: https://egyptian-institute-alexandria.edu.eg/security-policy
-Hiring: https://egyptian-institute-alexandria.edu.eg/careers
+Canonical: https://[domain]/.well-known/security.txt
+Policy: https://[domain]/security-policy
+Hiring: https://[domain]/careers
 
-# Security Policy for Egyptian Institute for Alexandria Academy
-# المعهد المصري لأكاديمية الإسكندرية للإدارة والمحاسبة
+# Security Policy for [اسم المؤسسة التعليمية]
+# [Institution Name in English]
 
 # If you discover a security vulnerability, please report it to us
 # إذا اكتشفت ثغرة أمنية، يرجى الإبلاغ عنها

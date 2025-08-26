@@ -31,8 +31,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm init -y
-          npm install --save-dev html-minifier-terser clean-css-cli terser imagemin-cli
+          npm install
 
       - name: Build and optimize
         run: |
@@ -66,10 +65,10 @@ jobs:
           echo "/* Cache version: $(date +%Y%m%d%H%M%S) */" >> style.css 2>/dev/null || true
 
       - name: Setup Pages
-        uses: actions/configure-pages@v3
+        uses: actions/configure-pages@v5
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v3
         with:
           path: './dist'
 
@@ -83,4 +82,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4
