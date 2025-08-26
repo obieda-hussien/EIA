@@ -1,0 +1,84 @@
+# GitHub Pages Jekyll Configuration
+# المعهد المصري لأكاديمية الإسكندرية للإدارة والمحاسبة
+
+# Site settings
+title: "المعهد المصري لأكاديمية الإسكندرية للإدارة والمحاسبة"
+description: "أفضل معهد تعليم عالي في مصر. تخصصات إدارة الأعمال، المحاسبة والمراجعة، ونظم معلومات الأعمال. أكثر من 4000 طالب و28 سنة خبرة."
+url: "https://obieda-hussien.github.io"
+baseurl: "/EIA"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+encoding: utf-8
+
+# GitHub Pages specific settings
+github:
+  repository_name: "EIA"
+  repository_url: "https://github.com/obieda-hussien/EIA"
+
+# Plugins
+plugins:
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# SEO settings
+lang: ar
+author: "المعهد المصري لأكاديمية الإسكندرية"
+
+# Social media and contact
+social:
+  name: "المعهد المصري لأكاديمية الإسكندرية"
+  links:
+    - https://facebook.com/AlexAcademyEIA
+    - https://wa.me/16000
+
+# Site verification
+google_site_verification: ""
+bing_site_verification: ""
+
+# Analytics
+google_analytics: ""
+
+# Exclude from processing
+exclude:
+  - node_modules/
+  - vendor/
+  - Gemfile
+  - Gemfile.lock
+  - package.json
+  - package-lock.json
+  - README.md
+  - LICENSE
+  - .gitignore
+  - .htaccess
+
+# Include files
+include:
+  - .well-known
+  - robots.txt
+  - sitemap.xml
+  - humans.txt
+  - security.txt
+
+# Collections and defaults
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
+      lang: "ar"
+      dir: "rtl"
+
+# Compression
+compress_html:
+  clippings: all
+  comments: all
+  endings: all
+  startings: [html, head, body]
+  blanklines: false
+  profile: false
+  ignore:
+    envs: [development]

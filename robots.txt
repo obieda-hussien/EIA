@@ -57,8 +57,7 @@ User-agent: DotBot
 Disallow: /
 
 # رابط خريطة الموقع
-Sitemap: https://egyptian-institute-alexandria.edu.eg/sitemap.xml
-Sitemap: https://egyptian-institute-alexandria.edu.eg/sitemap-images.xml
+Sitemap: https://obieda-hussien.github.io/EIA/sitemap.xml
 
 # معلومات إضافية
 # الموقع: المعهد المصري لأكاديمية الإسكندرية للإدارة والمحاسبة
