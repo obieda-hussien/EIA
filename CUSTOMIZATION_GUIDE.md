@@ -52,7 +52,26 @@
 [الرمز البريدي] → الرمز البريدي للمنطقة
 ```
 
-### 5. وسائل التواصل الاجتماعي
+### 6. معلومات المشروع (package.json)
+
+```json
+"your-username" → اسم المستخدم على GitHub
+"your-repo" → اسم المستودع على GitHub
+```
+
+مثال:
+```json
+"repository": {
+  "type": "git",
+  "url": "https://github.com/myuniversity/myuni-website.git"
+},
+"bugs": {
+  "url": "https://github.com/myuniversity/myuni-website/issues"
+},
+"homepage": "https://myuniversity.github.io/myuni-website/"
+```
+
+### 7. وسائل التواصل الاجتماعي
 
 ```html
 [رابط الفيسبوك] → https://facebook.com/yourpage
