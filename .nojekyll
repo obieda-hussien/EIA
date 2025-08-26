@@ -1,0 +1,2 @@
+# This file tells GitHub Pages to skip Jekyll processing
+# since we're using a custom GitHub Actions workflow for deployment

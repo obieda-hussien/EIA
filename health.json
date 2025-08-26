@@ -1,0 +1,19 @@
+{
+  "name": "المعهد المصري لأكاديمية الإسكندرية",
+  "status": "active",
+  "version": "1.0.0",
+  "deployment": "github-pages",
+  "last_updated": "2024-12-20",
+  "features": [
+    "responsive-design",
+    "rtl-support",
+    "seo-optimized",
+    "pwa-ready",
+    "multilingual"
+  ],
+  "contact": {
+    "phone": "16000",
+    "email": "info@eia.edu.eg",
+    "address": "الإسكندرية، مصر"
+  }
+}
