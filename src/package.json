@@ -2,14 +2,13 @@
   "name": "eia-react-website",
   "version": "1.0.0",
   "description": "المعهد المصري لأكاديمية الإسكندرية - موقع إلكتروني بتقنية React",
-  "main": "src/main.jsx",
+  "main": "index.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint src --ext .js,.jsx,.ts,.tsx",
-    "lint:fix": "eslint src --ext .js,.jsx,.ts,.tsx --fix",
-    "legacy-start": "python3 -m http.server 8000"
+    "lint:fix": "eslint src --ext .js,.jsx,.ts,.tsx --fix"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -25,10 +24,7 @@
     "autoprefixer": "^10.4.13",
     "eslint": "^8.34.0",
     "eslint-plugin-react": "^7.32.2",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "html-minifier-terser": "^7.2.0",
-    "clean-css-cli": "^5.6.2",
-    "terser": "^5.24.0"
+    "eslint-plugin-react-hooks": "^4.6.0"
   },
   "keywords": [
     "react",
@@ -36,27 +32,8 @@
     "arabic",
     "rtl",
     "tailwindcss",
-    "vite",
-    "educational-template",
-    "website-template",
-    "arabic-template",
-    "rtl-template",
-    "responsive-design",
-    "educational-institution",
-    "university-template",
-    "college-template",
-    "academy-template",
-    "template",
-    "education"
+    "vite"
   ],
   "author": "Egyptian Institute Alexandria",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/obieda-hussien/EIA.git"
-  },
-  "bugs": {
-    "url": "https://github.com/obieda-hussien/EIA/issues"
-  },
-  "homepage": "https://obieda-hussien.github.io/EIA/"
+  "license": "MIT"
 }
