@@ -4,6 +4,8 @@ import path from 'path'
 
 export default defineConfig({
   plugins: [react()],
+  root: './src',
+  publicDir: '../public',
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
@@ -19,7 +21,8 @@ export default defineConfig({
     port: 3000
   },
   build: {
-    outDir: 'dist',
-    sourcemap: true
+    outDir: '../dist',
+    sourcemap: true,
+    emptyOutDir: true
   }
 })

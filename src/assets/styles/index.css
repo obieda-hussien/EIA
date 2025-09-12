@@ -50,7 +50,7 @@
   }
   
   .news-card {
-    @apply bg-white rounded-2xl overflow-hidden transition-all duration-400;
+    @apply bg-white rounded-2xl overflow-hidden transition-all duration-500;
   }
   
   .news-card:hover {
