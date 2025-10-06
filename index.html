@@ -163,6 +163,12 @@
     }
     </script>
     
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-database-compat.js"></script>
+
     <!-- Google Analytics (Replace with your tracking ID) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=GA_TRACKING_ID"></script>
     <script>
@@ -684,6 +690,18 @@
                 <button class="menu-toggle" onclick="toggleSidebar()" aria-label="فتح قائمة التنقل">
                     <i class="fas fa-bars"></i>
                 </button>
+                
+                <!-- Login Button -->
+                <button id="loginBtn" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition ml-4">
+                    <i class="fas fa-sign-in-alt mr-2"></i>
+                    تسجيل الدخول
+                </button>
+                
+                <!-- Admin Panel Button (Hidden by default) -->
+                <a href="admin.html" id="adminPanelBtn" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition ml-2 hidden">
+                    <i class="fas fa-cog mr-2"></i>
+                    لوحة الإدارة
+                </a>
             </div>
         </div>
     </header>
@@ -1601,12 +1619,16 @@
                             <label class="block text-gray-700 font-semibold mb-2">رمز التحقق *</label>
                             <div class="flex items-center space-x-reverse space-x-4">
                                 <input type="text" 
+                                       name="captcha"
                                        class="flex-1 px-4 py-3 rounded-lg border-2 focus:border-blue-500 focus:outline-none" 
                                        placeholder="ادخل رمز التحقق"
-                                       required>
+                                       required maxlength="6">
                                 <div class="captcha-box">
-                                    A7B2K
+                                    <span id="captchaCode">A7B2K</span>
                                 </div>
+                                <button type="button" onclick="generateCaptcha()" class="bg-gray-600 text-white px-3 py-3 rounded-lg hover:bg-gray-700 transition">
+                                    <i class="fas fa-refresh"></i>
+                                </button>
                             </div>
                         </div>
                         
@@ -3407,7 +3429,7 @@
                 });
             });
             
-            // Results form submission
+            <!-- Results form submission -->
             const resultsForm = document.querySelector('#results form');
             if (resultsForm) {
                 resultsForm.addEventListener('submit', function(e) {
@@ -3419,12 +3441,42 @@
                     submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>جاري البحث...';
                     submitBtn.disabled = true;
                     
-                    // Simulate API call
-                    setTimeout(() => {
-                        alert('عذراً، النتائج غير متاحة حالياً. برجاء المحاولة لاحقاً أو الاتصال بشؤون الطلاب.');
+                    // Get form data
+                    const formData = new FormData(this);
+                    const studentCode = formData.get('studentCode');
+                    const nationalId = formData.get('nationalId');
+                    const captcha = formData.get('captcha');
+                    
+                    // Validate captcha
+                    const correctCaptcha = document.getElementById('captchaCode').textContent;
+                    if (captcha !== correctCaptcha) {
+                        alert('رمز التحقق غير صحيح');
                         submitBtn.innerHTML = originalText;
                         submitBtn.disabled = false;
-                    }, 2000);
+                        generateCaptcha();
+                        return;
+                    }
+                    
+                    // Search for results using Firebase
+                    searchStudentResults(studentCode, nationalId)
+                        .then(results => {
+                            submitBtn.innerHTML = originalText;
+                            submitBtn.disabled = false;
+                            
+                            if (results && results.length > 0) {
+                                showResultsModal(results);
+                            } else {
+                                alert('لم يتم العثور على نتائج بالبيانات المدخلة. برجاء التأكد من كود الطالب وآخر 5 أرقام من الرقم القومي.');
+                            }
+                            generateCaptcha();
+                        })
+                        .catch(error => {
+                            console.error('Error searching results:', error);
+                            alert('حدث خطأ في البحث. برجاء المحاولة لاحقاً أو الاتصال بشؤون الطلاب.');
+                            submitBtn.innerHTML = originalText;
+                            submitBtn.disabled = false;
+                            generateCaptcha();
+                        });
                 });
             }
             
@@ -3615,10 +3667,242 @@
         
         // Initialize hash navigation
         initializeHashNavigation();
+        
+        /**
+         * Search for student results using Firebase
+         */
+        async function searchStudentResults(studentCode, nationalIdLast5) {
+            try {
+                if (!window.ContentManager) {
+                    throw new Error('Firebase not initialized');
+                }
+                
+                const results = await window.ContentManager.getStudentResults(studentCode.toUpperCase(), nationalIdLast5);
+                return results;
+            } catch (error) {
+                console.error('Error searching student results:', error);
+                throw error;
+            }
+        }
+        
+        /**
+         * Show results modal
+         */
+        function showResultsModal(results) {
+            const modal = document.createElement('div');
+            modal.id = 'resultsModal';
+            modal.className = 'fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4';
+            
+            const student = results[0];
+            const subjects = student.subjects || [];
+            
+            modal.innerHTML = `
+                <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+                    <div class="sticky top-0 bg-white border-b border-gray-200 p-6 flex justify-between items-center">
+                        <h2 class="text-2xl font-bold text-gray-800">نتائج الطالب</h2>
+                        <button onclick="closeResultsModal()" class="text-gray-500 hover:text-gray-700 text-2xl">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="p-6">
+                        <!-- Student Info -->
+                        <div class="bg-blue-50 p-6 rounded-lg mb-6">
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div>
+                                    <h3 class="text-lg font-bold text-blue-800 mb-2">بيانات الطالب</h3>
+                                    <p><strong>الاسم:</strong> ${student.studentName}</p>
+                                    <p><strong>كود الطالب:</strong> ${student.studentCode}</p>
+                                </div>
+                                <div>
+                                    <p><strong>التخصص:</strong> ${student.department}</p>
+                                    <p><strong>السنة الدراسية:</strong> ${student.year}</p>
+                                    <p><strong>الفصل الدراسي:</strong> ${student.semester}</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Results Summary -->
+                        <div class="grid md:grid-cols-3 gap-4 mb-6">
+                            <div class="bg-green-50 p-4 rounded-lg text-center">
+                                <div class="text-3xl font-bold text-green-600">${student.gpa || 'غير محدد'}</div>
+                                <div class="text-sm text-green-700">المعدل التراكمي</div>
+                            </div>
+                            <div class="bg-blue-50 p-4 rounded-lg text-center">
+                                <div class="text-3xl font-bold text-blue-600">${student.totalGrade || 'غير محدد'}</div>
+                                <div class="text-sm text-blue-700">التقدير العام</div>
+                            </div>
+                            <div class="bg-purple-50 p-4 rounded-lg text-center">
+                                <div class="text-3xl font-bold text-purple-600">${subjects.length}</div>
+                                <div class="text-sm text-purple-700">عدد المواد</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Subjects Table -->
+                        ${subjects.length > 0 ? `
+                            <div class="bg-white border border-gray-200 rounded-lg overflow-hidden">
+                                <div class="bg-gray-50 p-4 border-b border-gray-200">
+                                    <h3 class="text-lg font-bold text-gray-800">تفاصيل النتائج</h3>
+                                </div>
+                                <div class="overflow-x-auto">
+                                    <table class="w-full">
+                                        <thead class="bg-gray-100">
+                                            <tr>
+                                                <th class="text-right py-3 px-4 font-semibold">اسم المادة</th>
+                                                <th class="text-center py-3 px-4 font-semibold">الدرجة</th>
+                                                <th class="text-center py-3 px-4 font-semibold">التقدير</th>
+                                                <th class="text-center py-3 px-4 font-semibold">الحالة</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            ${subjects.map(subject => `
+                                                <tr class="border-b border-gray-100">
+                                                    <td class="py-3 px-4">${subject.name}</td>
+                                                    <td class="py-3 px-4 text-center">${subject.grade}</td>
+                                                    <td class="py-3 px-4 text-center">${subject.letterGrade}</td>
+                                                    <td class="py-3 px-4 text-center">
+                                                        <span class="px-2 py-1 rounded-full text-xs ${subject.passed ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}">
+                                                            ${subject.passed ? 'نجح' : 'راسب'}
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                            `).join('')}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        ` : `
+                            <div class="text-center py-8 text-gray-500">
+                                <i class="fas fa-info-circle text-4xl mb-4"></i>
+                                <p>لا توجد تفاصيل مواد متاحة</p>
+                            </div>
+                        `}
+                        
+                        <!-- Actions -->
+                        <div class="mt-6 flex justify-center space-x-reverse space-x-4">
+                            <button onclick="printResults()" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition">
+                                <i class="fas fa-print mr-2"></i>
+                                طباعة النتيجة
+                            </button>
+                            <button onclick="closeResultsModal()" class="bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition">
+                                <i class="fas fa-times mr-2"></i>
+                                إغلاق
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+        }
+        
+        /**
+         * Close results modal
+         */
+        function closeResultsModal() {
+            const modal = document.getElementById('resultsModal');
+            if (modal) {
+                modal.remove();
+            }
+        }
+        
+        /**
+         * Print results
+         */
+        function printResults() {
+            const modal = document.getElementById('resultsModal');
+            if (!modal) return;
+            
+            const content = modal.querySelector('.p-6').innerHTML;
+            
+            const printWindow = window.open('', '_blank');
+            printWindow.document.write(`
+                <!DOCTYPE html>
+                <html dir="rtl" lang="ar">
+                <head>
+                    <meta charset="UTF-8">
+                    <title>نتائج الطالب - المعهد المصري</title>
+                    <style>
+                        body { 
+                            font-family: 'Cairo', sans-serif; 
+                            margin: 2rem; 
+                            line-height: 1.6; 
+                            color: #333;
+                            direction: rtl;
+                        }
+                        .header { 
+                            text-align: center; 
+                            border-bottom: 2px solid #3b82f6; 
+                            padding-bottom: 1rem; 
+                            margin-bottom: 2rem;
+                        }
+                        .header h1 { 
+                            color: #1e40af; 
+                            margin: 0;
+                        }
+                        table { 
+                            width: 100%; 
+                            border-collapse: collapse; 
+                            margin: 1rem 0;
+                        }
+                        th, td { 
+                            border: 1px solid #ddd; 
+                            padding: 8px; 
+                            text-align: center;
+                        }
+                        th { 
+                            background-color: #f3f4f6; 
+                            font-weight: bold;
+                        }
+                        .bg-blue-50 { background-color: #eff6ff; padding: 1rem; border-radius: 8px; margin: 1rem 0; }
+                        .bg-green-50 { background-color: #f0fdf4; padding: 1rem; border-radius: 8px; text-align: center; }
+                        .bg-blue-50 { background-color: #eff6ff; padding: 1rem; border-radius: 8px; text-align: center; }
+                        .bg-purple-50 { background-color: #faf5ff; padding: 1rem; border-radius: 8px; text-align: center; }
+                        .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+                        .text-3xl { font-size: 1.875rem; font-weight: bold; }
+                        .text-sm { font-size: 0.875rem; }
+                        @media print {
+                            body { margin: 0; }
+                            .header { break-after: avoid; }
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class="header">
+                        <h1>المعهد المصري لأكاديمية الإسكندرية للإدارة والمحاسبة</h1>
+                        <p>نتائج الطالب</p>
+                        <p>تاريخ الطباعة: ${new Date().toLocaleDateString('ar-EG')}</p>
+                    </div>
+                    ${content.replace(/<button[^>]*>.*?<\/button>/gi, '')}
+                </body>
+                </html>
+            `);
+            printWindow.document.close();
+            printWindow.print();
+        }
+        
+        // Generate captcha when page loads
+        generateCaptcha();
+        
+        /**
+         * Generate random captcha
+         */
+        function generateCaptcha() {
+            const captcha = Math.random().toString(36).substring(2, 8).toUpperCase();
+            const captchaElement = document.getElementById('captchaCode');
+            if (captchaElement) {
+                captchaElement.textContent = captcha;
+            }
+        }
     </script>
     
     <!-- API and Main JavaScript Files -->
+    <script src="js/firebase-config.js"></script>
+    <script src="js/content-manager.js"></script>
+    <script src="js/auth-system.js"></script>
     <script src="js/api.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/dynamic-content.js"></script>
+    <script src="js/data-initializer.js"></script>
 </body>
 </html>
